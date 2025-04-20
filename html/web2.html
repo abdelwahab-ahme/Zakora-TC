@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>النظم العددية</title>
+  <style>
+    body {
+      display: flex;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(45deg, #ff007f, #ff7f00, #007fff, #00ff7f);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+    transition: all 0.3s ease;
+    }
+
+    .sidebar {
+      width: 300px;
+      background-color: rgba(0, 0, 0, 0.8); /* أسود شفاف */
+      padding: 20px;
+      border-left: 2px solid #333;
+      height: 100vh;
+      overflow-y: auto;
+      color: white;
+    }
+
+    .sidebar h3 {
+      margin-top: 20px;
+      margin-bottom: 5px;
+      color: #cccccc; /* لون أفتح للعنوان */
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar li {
+      padding: 8px;
+      cursor: pointer;
+      color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 4px;
+      transition: background-color 0.2s ease;
+    }
+
+    .sidebar li:hover {
+      background-color: #444;
+    }
+
+    .watched {
+      color: #d4ffcb;
+      font-size: 0.9em;
+    }
+
+    .content {
+      flex-grow: 1;
+      padding: 20px;
+    }
+
+    h1.title {
+      color: #3700ff;
+      margin-bottom: 20px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+    }
+
+    .nav-buttons {
+      margin-top: 15px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .nav-buttons button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background-color 0.2s ease;
+    }
+
+    .nav-buttons button:hover {
+      background-color: #0056b3;
+    }
+
+    .nav-buttons button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="content">
+    <h1 class="title">النظم العددية</h1>
+    <h2>مشاهدة الدرس</h2>
+    <iframe id="videoFrame" src="https://www.youtube.com/embed/" allowfullscreen></iframe>
+
+    <div class="nav-buttons">
+      <button onclick="prevVideo()" id="prevBtn">السابق</button>
+      <button onclick="nextVideo()" id="nextBtn">التالي</button>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <h3>Week 0</h3>
+    <ul>
+      <li data-id="dQw4w9WgXcQ" onclick="loadVideo('dQw4w9WgXcQ')">
+        الدرس الأول <span class="status"></span>
+      </li>
+      <li data-id="3GwjfUFyY6M" onclick="loadVideo('3GwjfUFyY6M')">
+        الدرس الثاني <span class="status"></span>
+      </li>
+    </ul>
+
+    <h3>Week 1</h3>
+    <ul>
+      <li data-id="L_jWHffIx5E" onclick="loadVideo('L_jWHffIx5E')">
+        الدرس الأول <span class="status"></span>
+      </li>
+      <li data-id="kXYiU_JCYtU" onclick="loadVideo('kXYiU_JCYtU')">
+        الدرس الثاني <span class="status"></span>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    const videos = [
+      'dQw4w9WgXcQ',
+      '3GwjfUFyY6M',
+      'L_jWHffIx5E',
+      'kXYiU_JCYtU'
+    ];
+
+    let currentIndex = -1;
+
+    function loadVideo(videoId) {
+      const iframe = document.getElementById("videoFrame");
+      iframe.src = `https://www.youtube.com/embed/${videoId}`;
+      currentIndex = videos.indexOf(videoId);
+      localStorage.setItem(videoId, 'watched');
+      updateWatchedStatus();
+      updateNavButtons();
+    }
+
+    function updateWatchedStatus() {
+      const items = document.querySelectorAll('.sidebar li');
+      items.forEach(item => {
+        const id = item.getAttribute('data-id');
+        const status = item.querySelector('.status');
+        if (localStorage.getItem(id) === 'watched') {
+          status.textContent = '✔ تمت المشاهدة';
+          status.classList.add('watched');
+        } else {
+          status.textContent = '';
+          status.classList.remove('watched');
+        }
+      });
+    }
+
+    function updateNavButtons() {
+      document.getElementById('prevBtn').disabled = currentIndex <= 0;
+      document.getElementById('nextBtn').disabled = currentIndex >= videos.length - 1;
+    }
+
+    function nextVideo() {
+      if (currentIndex < videos.length - 1) {
+        loadVideo(videos[currentIndex + 1]);
+      }
+    }
+
+    function prevVideo() {
+      if (currentIndex > 0) {
+        loadVideo(videos[currentIndex - 1]);
+      }
+    }
+
+    window.onload = function () {
+      updateWatchedStatus();
+      loadVideo(videos[0]);
+    }
+  </script>
+
+</body>
+</html>
