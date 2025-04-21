@@ -123,7 +123,12 @@
         متصفحك لا يدعم تشغيل الفيديو.
       </video>
 
-      <iframe id="youtubePlayer" style="display: none;" frameborder="0" allowfullscreen></iframe>
+      <iframe id="youtubePlayer"
+              style="display: none;"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+      </iframe>
     </div>
 
     <div class="nav-buttons">
@@ -135,7 +140,7 @@
   <div class="sidebar">
     <h3>Week 0</h3>
     <ul>
-      <li data-id="w0l1" onclick="loadVideo('https://youtu.be/Vf1nx8zzpac', 'w0l1')">
+      <li data-id="w0l1" onclick="loadVideo('https://www.youtube.com/embed/Vf1nx8zzpac', 'w0l1')">
         الدرس التمهيدي <span class="status"></span>
       </li>
       <li data-id="w0l2" onclick="loadVideo('video/SQL/SQL-الدرس-الثاني.mp4', 'w0l2')">
@@ -156,7 +161,7 @@
 
   <script>
     const videos = [
-      { id: 'w0l1', file: 'https://youtu.be/Vf1nx8zzpac' },
+      { id: 'w0l1', file: 'https://www.youtube.com/embed/Vf1nx8zzpac' },
       { id: 'w0l2', file: 'video/SQL/SQL-الدرس-الثاني.mp4' },
       { id: 'w1l1', file: 'video/SQL/SQL-الدرس-الثالث.mp4' },
       { id: 'w1l2', file: 'video/SQL/SQL-الدرس-الرابع.mp4' }
@@ -168,10 +173,8 @@
       const video = document.getElementById("videoPlayer");
       const youtube = document.getElementById("youtubePlayer");
 
-      if (filePath.includes("youtube.com") || filePath.includes("youtu.be")) {
-        let videoIdMatch = filePath.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&]+)/);
-        let embedId = videoIdMatch ? videoIdMatch[1] : "";
-        youtube.src = `https://www.youtube.com/embed/${embedId}`;
+      if (filePath.includes("youtube.com/embed")) {
+        youtube.src = filePath;
         youtube.style.display = "block";
         video.style.display = "none";
         video.pause();
