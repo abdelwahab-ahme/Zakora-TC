@@ -3,13 +3,14 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
+    padding-top: 80px; /* لحل مشكلة تغطية الهيدر للمحتوى */
     background: linear-gradient(45deg, #ff007f, #ff7f00, #007fff, #00ff7f);
     background-size: 400% 400%;
     animation: gradientMove 10s ease infinite;
     font-family: 'Arial', sans-serif;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: start;
 }
 
 @keyframes gradientMove {
@@ -35,14 +36,13 @@ header {
     background-size: 400% 400%;
     animation: gradientMove 10s ease infinite;
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     z-index: 100;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0px;
-    top: 0;
-    left: 0;
     padding: 15px 30px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
@@ -59,6 +59,8 @@ header ul {
     justify-content: center;
     align-items: center;
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 header ul li {
@@ -84,10 +86,11 @@ header ul li a:hover, .active {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 120px; /* جعل المسافة بين الفيديو وشريط الأدوات */
+    flex-direction: row;
     margin-bottom: 20px;
     width: 100%;
-    gap: 20px; /* إضافة مسافة بين الفيديو والنص */
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .video-container .video-gif {
@@ -95,10 +98,10 @@ header ul li a:hover, .active {
     max-width: 600px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    background-color: transparent; /* الخلفية شفافة */
+    background-color: transparent;
 }
 
-/* تصميم شريط البحث */
+/* شريط البحث */
 .search-box {
     display: flex;
     align-items: center;
@@ -128,12 +131,11 @@ header ul li a:hover, .active {
     color: #555;
 }
 
-/* تأثير تكبير شريط البحث عند التفاعل */
 .search-box:hover {
     width: 250px;
 }
 
-/* باقي المحتوى */
+/* المحتوى */
 .container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -149,7 +151,6 @@ header ul li a:hover, .active {
     background-size: 400% 400%;
     animation: gradientMove 10s ease infinite;
     width: 250px;
-    background-color: #0f2546;
     color: white;
     text-align: center;
     display: flex;
@@ -161,14 +162,13 @@ header ul li a:hover, .active {
     transition: all 0.3s ease;
 }
 
-/* تأثير عند الوقوف بالماوس */
 .div-box:hover {
-    transform: translateY(-10px); /* رفع العنصر قليلاً لأعلى */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* إضافة ظل أكبر عند الوقوف */
-    background-color: #1d1d1d; /* تغيير الخلفية */
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    background-color: #1d1d1d;
 }
 
-/* تصميم قسم "معلومات عني" */
+/* الفوتر */
 .footer-container {
     display: flex;
     justify-content: space-between;
@@ -177,7 +177,7 @@ header ul li a:hover, .active {
     direction: rtl;
     padding: 20px;
     background-color: #161515;
-    color:#fff; 
+    color: #fff;
 }
 
 .footer-section {
@@ -206,52 +206,83 @@ header ul li a:hover, .active {
     padding: 10px;
     background-color: #161515;
     font-size: 14px;
-    color:#fff; 
+    color: #fff;
 }
 
-/* استعلامات الوسائط لتنسيق الموبايل */
+/* موبايل */
 @media (max-width: 768px) {
-    /* جعل شريط البحث أكبر قليلاً على الموبايل */
     .search-box {
         width: 90%;
         margin: 0 auto;
     }
 
-    /* تعديل النصوص ليتناسب مع الموبايل */
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+    }
+
     header .logo {
         font-size: 24px;
+        margin-bottom: 10px;
     }
 
     header ul {
         flex-direction: column;
-        text-align: center;
+        width: 100%;
+        padding: 0;
+        gap: 10px;
     }
 
     header ul li {
-        margin-bottom: 10px;
+        margin: 5px 0;
+        width: 100%;
+        text-align: right;
+    }
+
+    header ul li a {
+        display: block;
+        width: 100%;
     }
 
     .container {
-        grid-template-columns: 1fr; /* جعل الأعمدة عمودية */
+        grid-template-columns: 1fr;
         width: 100%;
+        padding: 10px;
+        justify-items: center;
     }
 
     .div-box {
         width: 90%;
-        margin: 10px auto; /* جعل العناصر تأخذ عرضاً أكبر على الموبايل */
-        height: 180px; /* تقليل ارتفاع الصناديق */
+        height: 180px;
+        margin: 10px auto;
     }
 
     .video-container {
-        flex-direction: column; /* وضع الفيديو والنص بشكل عمودي */
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-top: 20px;
     }
 
     .video-container .video-gif {
-        width: 80%;
+        width: 90%;
+        max-width: 100%;
         margin-bottom: 20px;
     }
 
-    /* تغيير تصميم الفوتر ليتناسب مع الموبايل */
+    .text-content {
+        font-size: 16px;
+    }
+
+    .search-box {
+        width: 150px;
+    }
+
+    .search-box:hover {
+        width: 180px;
+    }
+
     .footer-container {
         flex-direction: column;
         align-items: center;
@@ -268,9 +299,8 @@ header ul li a:hover, .active {
     }
 }
 
-/* استعلامات الوسائط للأجهزة الصغيرة جداً (مثل الهواتف) */
+/* شاشات أصغر */
 @media (max-width: 480px) {
-    /* تصغير النصوص والمسافات */
     .search-box input {
         font-size: 14px;
     }
@@ -287,79 +317,5 @@ header ul li a:hover, .active {
 
     .footer-bottom {
         font-size: 10px;
-    }
-}
-
-@media (max-width: 768px) {
-    .video-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .video-container .video-gif {
-        width: 90%;
-        max-width: 100%;
-    }
-
-    .text-content {
-        margin-right: 0;
-        font-size: 16px;
-    }
-
-    .container {
-        grid-template-columns: 1fr;
-        width: 100%;
-        padding: 10px;
-        justify-items: center;
-    }
-
-    .div-box {
-        width: 90%;
-    }
-
-    .search-box {
-        width: 150px;
-    }
-
-    .search-box:hover {
-        width: 180px;
-    }
-
-    header ul {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    header ul li {
-        margin-right: 0;
-    }
-}
-
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px 20px;
-    }
-
-    header .logo {
-        margin-bottom: 10px;
-    }
-
-    header ul {
-        width: 100%;
-        padding: 0;
-    }
-
-    header ul li {
-        margin: 5px 0;
-        width: 100%;
-        text-align: right;
-    }
-
-    header ul li a {
-        display: block;
-        width: 100%;
     }
 }
