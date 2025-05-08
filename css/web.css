@@ -1,3 +1,4 @@
+/* الأساسيات */
 body {
     margin: 0;
     padding: 0;
@@ -97,15 +98,6 @@ header ul li a:hover, .active {
     background-color: transparent; /* الخلفية شفافة */
 }
 
-.text-content {
-    font-size: 18px;
-    font-weight: bold;
-    color: rgb(211, 20, 20);
-    text-align: right;
-    margin-right: 20px;
-    flex: 1;
-}
-
 /* تصميم شريط البحث */
 .search-box {
     display: flex;
@@ -168,6 +160,7 @@ header ul li a:hover, .active {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
 }
+
 /* تأثير عند الوقوف بالماوس */
 .div-box:hover {
     transform: translateY(-10px); /* رفع العنصر قليلاً لأعلى */
@@ -216,4 +209,83 @@ header ul li a:hover, .active {
     color:#fff; 
 }
 
+/* استعلامات الوسائط لتنسيق الموبايل */
+@media (max-width: 768px) {
+    /* جعل شريط البحث أكبر قليلاً على الموبايل */
+    .search-box {
+        width: 90%;
+        margin: 0 auto;
+    }
 
+    /* تعديل النصوص ليتناسب مع الموبايل */
+    header .logo {
+        font-size: 24px;
+    }
+
+    header ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header ul li {
+        margin-bottom: 10px;
+    }
+
+    .container {
+        grid-template-columns: 1fr; /* جعل الأعمدة عمودية */
+        width: 100%;
+    }
+
+    .div-box {
+        width: 90%;
+        margin: 10px auto; /* جعل العناصر تأخذ عرضاً أكبر على الموبايل */
+        height: 180px; /* تقليل ارتفاع الصناديق */
+    }
+
+    .video-container {
+        flex-direction: column; /* وضع الفيديو والنص بشكل عمودي */
+    }
+
+    .video-container .video-gif {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    /* تغيير تصميم الفوتر ليتناسب مع الموبايل */
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        min-width: auto;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .footer-bottom {
+        font-size: 12px;
+    }
+}
+
+/* استعلامات الوسائط للأجهزة الصغيرة جداً (مثل الهواتف) */
+@media (max-width: 480px) {
+    /* تصغير النصوص والمسافات */
+    .search-box input {
+        font-size: 14px;
+    }
+
+    .div-box {
+        height: 150px;
+        font-size: 14px;
+    }
+
+    .video-container .video-gif {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .footer-bottom {
+        font-size: 10px;
+    }
+}
