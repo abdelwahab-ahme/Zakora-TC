@@ -1,3 +1,287 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: linear-gradient(45deg, #ff007f, #ff7f00, #007fff, #00ff7f);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* شريط التنقل العلوي */
+header {
+    background: linear-gradient(45deg, #ff007f, #ff7f00, #007fff, #00ff7f);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px;
+    top: 0;
+    left: 0;
+    padding: 15px 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+header .logo {
+    font-size: 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #fff;
+}
+
+header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+header ul li {
+    margin-right: 30px;
+}
+
+header ul li a {
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 18px;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+header ul li a:hover, .active {
+    background: #fff;
+    color: #200016;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* قسم الفيديو والنص */
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 120px; /* جعل المسافة بين الفيديو وشريط الأدوات */
+    margin-bottom: 20px;
+    width: 100%;
+    gap: 20px; /* إضافة مسافة بين الفيديو والنص */
+}
+
+.video-container .video-gif {
+    width: 50%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: transparent; /* الخلفية شفافة */
+}
+
+.text-content {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(211, 20, 20);
+    text-align: right;
+    margin-right: 20px;
+    flex: 1;
+}
+
+/* تصميم شريط البحث */
+.search-box {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 25px;
+    padding: 5px 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    transition: all 0.3s ease-in-out;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    flex: 1;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 25px;
+    width: 100%;
+}
+
+.search-box button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #555;
+}
+
+/* تأثير تكبير شريط البحث عند التفاعل */
+.search-box:hover {
+    width: 250px;
+}
+
+/* باقي المحتوى */
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 30px;
+    width: 900px;
+    height: auto;
+    margin-top: 30px;
+}
+
+.div-box {
+    background: linear-gradient(45deg, #ff007f, #ff7f00, #007fff, #00ff7f);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+    width: 250px;
+    background-color: #0f2546;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 250px;
+    height: 200px;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* الكرت مع الخلفية */
+#d1 { background-image: url(../img/اساسيات\ الحاسوب.jpg);}
+#d2 { background-image: url(../img/النظم\ العددية.jfif);}
+#d3 { background-image: url(../img/اساسيات\ البرمجة.jpg);}
+#d4 { background-image: url(../img/c.png);}
+#d5 { background-image: url(../img/c++.jfif);}
+#d6 { background-image: url(../img/c2.png);}
+#d7 { background-image: url(../img/بايثون.jfif);}
+#d8 { background-image: url(../img/جافا.jfif);}
+#d9 { background-image: url(../img/بي.jfif);}
+#d10 { background-image: url(../img/اتش.jfif);}
+#d11 { background-image: url(../img/سي.jfif);}
+#d12 { background-image: url(../img/جافا\ سكربت.jfif);}
+#d13 { background-image: url(../img/سكول.jfif);}
+
+/* النص الشفاف اللي يظهر عند الوقوف */
+ .overlay-text {
+    position: absolute;
+    bottom: -100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    font-size: 14px;
+    transition: bottom 0.4s ease-in-out;
+}
+
+/* التأثير عند الوقوف */
+.div-box:hover .overlay-text {
+    bottom: 0;
+}
+
+/* تأثير عند الوقوف بالماوس */
+.div-box:hover {
+    transform: translateY(-10px); /* رفع العنصر قليلاً لأعلى */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* إضافة ظل أكبر عند الوقوف */
+    background-color: #1d1d1d; /* تغيير الخلفية */
+}
+
+/* تصميم قسم "معلومات عني" */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-align: right;
+    direction: rtl;
+    padding: 20px;
+    background-color: #161515;
+    color:#fff; 
+}
+
+.footer-section {
+    flex: 1;
+    padding: 10px;
+    min-width: 200px;
+}
+
+#about-us {
+    order: 1;
+}
+
+#contact {
+    order: 2;
+    text-align: center;
+}
+
+#info {
+    order: 3;
+    text-align: left;
+    direction: ltr;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 10px;
+    background-color: #161515;
+    font-size: 14px;
+    color:#fff; 
+}
+.week{
+    background: linear-gradient(45deg, #ff007f, #ff7f00, #007fff, #00ff7f);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+    color: #fff;
+    text-align: center;
+    transition: all 0.3s ease;
+    background-color: #0f2546;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+
+.container_web {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 20px;
+}
 @media (max-width: 768px) {
     /* تنسيق الفيديو والنص في عمود بدلاً من صف */
     .video-container {
