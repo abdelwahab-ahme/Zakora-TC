@@ -9,225 +9,330 @@ body {
     font-family: 'Arial', sans-serif;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 @keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
-/* شريط التنقل */
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* شريط التنقل العلوي */
 header {
     background: linear-gradient(45deg, #ff007f, #ff7f00, #007fff, #00ff7f);
     background-size: 400% 400%;
     animation: gradientMove 10s ease infinite;
     position: fixed;
-    top: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 100;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
+    margin: 0px;
+    top: 0;
+    left: 0;
+    padding: 15px 30px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    flex-wrap: wrap;
 }
 
 header .logo {
     font-size: 30px;
+    text-transform: uppercase;
     font-weight: bold;
     color: #fff;
 }
 
-/* قائمة الأدوات (الشاشة الكبيرة) */
-header .nav-links {
+header ul {
     display: flex;
+    justify-content: center;
+    align-items: center;
     list-style: none;
-    padding: 0;
-    margin: 0;
 }
 
-header .nav-links li {
-    margin-left: 20px;
+header ul li {
+    margin-right: 30px;
 }
 
-header .nav-links li a {
-    color: white;
-    padding: 6px 12px;
+header ul li a {
+    padding: 6px 15px;
     border-radius: 20px;
-    transition: 0.3s;
     font-size: 18px;
+    color: white;
+    transition: all 0.3s ease;
 }
 
-header .nav-links li a:hover,
-header .nav-links li a.active {
+header ul li a:hover, .active {
     background: #fff;
     color: #200016;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* أيقونة الهامبرغر */
-.hamburger-menu {
-    display: none;
-    cursor: pointer;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 24px;
-    width: 30px;
-}
-
-.hamburger-menu .line {
-    height: 4px;
+/* قسم الفيديو والنص */
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 120px; /* جعل المسافة بين الفيديو وشريط الأدوات */
+    margin-bottom: 20px;
     width: 100%;
-    background-color: white;
-    border-radius: 5px;
+    gap: 20px; /* إضافة مسافة بين الفيديو والنص */
 }
 
-/* قائمة الأدوات المنسدلة للموبايل */
-.mobile-nav {
-    display: none;
-    background-color: #333;
-    position: absolute;
-    top: 60px;
-    width: 100%;
-    left: 0;
-    z-index: 999;
+.video-container .video-gif {
+    width: 50%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: transparent; /* الخلفية شفافة */
 }
 
-.mobile-nav.active {
-    display: block;
-}
-
-.mobile-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.mobile-nav ul li {
-    text-align: center;
-    padding: 10px;
-    background: #444;
-}
-
-.mobile-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-.mobile-nav ul li a:hover {
-    background: #555;
-}
-
-/* شريط البحث */
+/* تصميم شريط البحث */
 .search-box {
     display: flex;
     align-items: center;
     background: white;
     border-radius: 25px;
     padding: 5px 15px;
-    margin-top: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    transition: all 0.3s ease-in-out;
 }
 
 .search-box input {
     border: none;
     outline: none;
+    flex: 1;
     padding: 8px;
     font-size: 16px;
-    flex: 1;
+    border-radius: 25px;
+    width: 100%;
 }
 
 .search-box button {
     background: none;
     border: none;
-    font-size: 18px;
     cursor: pointer;
+    font-size: 18px;
+    color: #555;
 }
 
-/* الفيديو */
-.video-container {
-    margin-top: 80px;
-    position: relative;
-    width: 100%;
-    height: 500px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* تأثير تكبير شريط البحث عند التفاعل */
+.search-box:hover {
+    width: 250px;
 }
 
-.video-container img, .video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-}
-
-.video-container h3 {
-    position: relative;
-    z-index: 1;
-    color: white;
-    font-size: 24px;
-    text-align: center;
-}
-
-/* المحتوى */
+/* باقي المحتوى */
 .container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     gap: 30px;
-    padding: 30px;
+    width: 900px;
+    height: auto;
+    margin-top: 30px;
 }
 
 .div-box {
     background: linear-gradient(45deg, #ff007f, #ff7f00, #007fff, #00ff7f);
     background-size: 400% 400%;
     animation: gradientMove 10s ease infinite;
+    width: 250px;
+    background-color: #0f2546;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 200px;
     border-radius: 15px;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    transition: 0.3s;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
 }
 
+/* تأثير عند الوقوف بالماوس */
 .div-box:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    transform: translateY(-10px); /* رفع العنصر قليلاً لأعلى */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* إضافة ظل أكبر عند الوقوف */
+    background-color: #1d1d1d; /* تغيير الخلفية */
 }
 
-/* الفوتر */
+/* تصميم قسم "معلومات عني" */
 .footer-container {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    text-align: right;
+    direction: rtl;
     padding: 20px;
-    background-color: #333;
-    color: white;
+    background-color: #161515;
+    color:#fff; 
 }
 
 .footer-section {
     flex: 1;
     padding: 10px;
-    margin: 10px;
+    min-width: 200px;
 }
 
-.footer-section h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
+#about-us {
+    order: 1;
+}
+
+#contact {
+    order: 2;
+    text-align: center;
+}
+
+#info {
+    order: 3;
+    text-align: left;
+    direction: ltr;
 }
 
 .footer-bottom {
-    background-color: #222;
-    color: white;
     text-align: center;
     padding: 10px;
+    background-color: #161515;
     font-size: 14px;
+    color:#fff; 
 }
+
+/* استعلامات الوسائط لتنسيق الموبايل */
+@media (max-width: 768px) {
+    /* جعل شريط البحث أكبر قليلاً على الموبايل */
+    .search-box {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    /* تعديل النصوص ليتناسب مع الموبايل */
+    header .logo {
+        font-size: 24px;
+    }
+
+    header ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header ul li {
+        margin-bottom: 10px;
+    }
+
+    .container {
+        grid-template-columns: 1fr; /* جعل الأعمدة عمودية */
+        width: 100%;
+    }
+
+    .div-box {
+        width: 90%;
+        margin: 10px auto; /* جعل العناصر تأخذ عرضاً أكبر على الموبايل */
+        height: 180px; /* تقليل ارتفاع الصناديق */
+    }
+
+    .video-container {
+        flex-direction: column; /* وضع الفيديو والنص بشكل عمودي */
+    }
+
+    .video-container .video-gif {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    /* تغيير تصميم الفوتر ليتناسب مع الموبايل */
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        min-width: auto;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .footer-bottom {
+        font-size: 12px;
+    }
+}
+
+/* استعلامات الوسائط للأجهزة الصغيرة جداً (مثل الهواتف) */
+@media (max-width: 480px) {
+    /* تصغير النصوص والمسافات */
+    .search-box input {
+        font-size: 14px;
+    }
+
+    .div-box {
+        height: 150px;
+        font-size: 14px;
+    }
+
+    .video-container .video-gif {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .footer-bottom {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .video-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .video-container .video-gif {
+        width: 90%;
+        max-width: 100%;
+    }
+
+    .text-content {
+        margin-right: 0;
+        font-size: 16px;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        width: 100%;
+        padding: 10px;
+        justify-items: center;
+    }
+
+    .div-box {
+        width: 90%;
+    }
+
+    .search-box {
+        width: 150px;
+    }
+
+    .search-box:hover {
+        width: 180px;
+    }
+
+    header ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    header ul li {
+        margin-right: 0;
+    }
+}
+
