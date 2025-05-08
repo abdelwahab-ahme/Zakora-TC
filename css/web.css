@@ -1,338 +1,189 @@
-/* الأساسيات */
-body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    background: linear-gradient(45deg, #ff007f, #ff7f00, #007fff, #00ff7f);
-    background-size: 400% 400%;
-    animation: gradientMove 10s ease infinite;
-    font-family: 'Arial', sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="icon/ايقونة.ico" type="image/x-icon">
+    <title>Courses</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/web1.css">
+</head>
+<body>
+    
 
-@keyframes gradientMove {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
+    
 
-a {
-    text-decoration: none;
-    color: #fff;
-}
 
-/* شريط التنقل العلوي */
-header {
-    background: linear-gradient(45deg, #ff007f, #ff7f00, #007fff, #00ff7f);
-    background-size: 400% 400%;
-    animation: gradientMove 10s ease infinite;
-    position: fixed;
-    width: 100%;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0px;
-    top: 0;
-    left: 0;
-    padding: 15px 30px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
 
-header .logo {
-    font-size: 30px;
-    text-transform: uppercase;
-    font-weight: bold;
-    color: #fff;
-}
 
-header ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-}
 
-header ul li {
-    margin-right: 30px;
-}
 
-header ul li a {
-    padding: 6px 15px;
-    border-radius: 20px;
-    font-size: 18px;
-    color: white;
-    transition: all 0.3s ease;
-}
+    <header>
+        <h2><a href="#" class="logo">hagag</a></h2>
+        <ul>
+            <li><a href="web.html" class="active">Home</a></li>
+            <li><a href="#container">Product</a></li>
+            <li><a href="">Shop</a></li>
+            <li><a href="#info">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="search-box">
+            <input type="text" placeholder="ابحث هنا...">
+            <button>🔍</button>
+        </div>
+    </header>
 
-header ul li a:hover, .active {
-    background: #fff;
-    color: #200016;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
 
-/* قسم الفيديو والنص */
-.video-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 120px; /* جعل المسافة بين الفيديو وشريط الأدوات */
-    margin-bottom: 20px;
-    width: 100%;
-    gap: 20px; /* إضافة مسافة بين الفيديو والنص */
-}
 
-.video-container .video-gif {
-    width: 50%;
-    max-width: 600px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    background-color: transparent; /* الخلفية شفافة */
-}
 
-/* تصميم شريط البحث */
-.search-box {
-    display: flex;
-    align-items: center;
-    background: white;
-    border-radius: 25px;
-    padding: 5px 15px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    width: 200px;
-    transition: all 0.3s ease-in-out;
-}
 
-.search-box input {
-    border: none;
-    outline: none;
-    flex: 1;
-    padding: 8px;
-    font-size: 16px;
-    border-radius: 25px;
-    width: 100%;
-}
 
-.search-box button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    color: #555;
-}
 
-/* تأثير تكبير شريط البحث عند التفاعل */
-.search-box:hover {
-    width: 250px;
-}
 
-/* باقي المحتوى */
-.container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 30px;
-    width: 900px;
-    height: auto;
-    margin-top: 30px;
-}
 
-.div-box {
-    background: linear-gradient(45deg, #ff007f, #ff7f00, #007fff, #00ff7f);
-    background-size: 400% 400%;
-    animation: gradientMove 10s ease infinite;
-    width: 250px;
-    background-color: #0f2546;
-    color: white;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-}
 
-/* تأثير عند الوقوف بالماوس */
-.div-box:hover {
-    transform: translateY(-10px); /* رفع العنصر قليلاً لأعلى */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* إضافة ظل أكبر عند الوقوف */
-    background-color: #1d1d1d; /* تغيير الخلفية */
-}
 
-/* تصميم قسم "معلومات عني" */
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    text-align: right;
-    direction: rtl;
-    padding: 20px;
-    background-color: #161515;
-    color:#fff; 
-}
 
-.footer-section {
-    flex: 1;
-    padding: 10px;
-    min-width: 200px;
-}
 
-#about-us {
-    order: 1;
-}
+    <div class="container" id="container">
+        <div onclick="document.location='web1.html'" class="div-box" id="d1">
+        <div class="overlay-text">
+            <h2>أساسيات الحاسوب</h2>
+            <p>تعلم المبادئ الأساسية للحاسوب وأنظمة التشغيل.</p>
+        </div>
+    </div>
+        <div onclick="document.location='web2.html'" class="div-box" id="d2">
+            <div class="overlay-text">
+                <h2>النظم العددية</h2>
+                <p>تعلم لغة الالة (النظام الثنائي والعشري والسادس عشر).</p>
+            </div>
+        </div>
+        <div onclick="document.location='web3.html'" class="div-box" id="d3">
+            <div class="overlay-text">
+                <h2>أساسيات البرمجة</h2>
+                <p>تعلم المبادئ الأساسية للبرمجة .</p>
+            </div>
+        </div>
 
-#contact {
-    order: 2;
-    text-align: center;
-}
 
-#info {
-    order: 3;
-    text-align: left;
-    direction: ltr;
-}
+          <div onclick="document.location='web4.html'" class="div-box" id="d4">
+        <div class="overlay-text">
+            <h2>لغة C</h2>
+            <p>تعلم اساسيات لغة C.</p>
+        </div>
+    </div>
+        <div onclick="document.location='web5.html'" class="div-box" id="d5">
+            <div class="overlay-text">
+                <h2>لغة C++</h2>
+                <p>تعلم اساسيات لغة C++.</p>
+            </div>
+        </div>
+        <div onclick="document.location='web6.html'" class="div-box" id="d6">
+            <div class="overlay-text">
+                <h2>لغة C#</h2>
+                <p>تعلم اساسيات لغة C#.</p>
+            </div>
+        </div>
 
-.footer-bottom {
-    text-align: center;
-    padding: 10px;
-    background-color: #161515;
-    font-size: 14px;
-    color:#fff; 
-}
 
-/* استعلامات الوسائط لتنسيق الموبايل */
-@media (max-width: 768px) {
-    /* جعل شريط البحث أكبر قليلاً على الموبايل */
-    .search-box {
-        width: 90%;
-        margin: 0 auto;
-    }
+        <div onclick="document.location='web7.html'" class="div-box" id="d7">
+            <div class="overlay-text">
+                <h2>لغة python</h2>
+                <p>تعلم اساسيات لغة Python.</p>
+            </div>
+        </div>
+            <div onclick="document.location='web8.html'" class="div-box" id="d8">
+                <div class="overlay-text">
+                    <h2>لغة JAVA</h2>
+                    <p>تعلم اساسيات لغة JAVA.</p>
+                </div>
+            </div>
+            <div onclick="document.location='web9.html'" class="div-box" id="d9">
+                <div class="overlay-text">
+                    <h2>لغة PHP</h2>
+                    <p>تعلم اساسيات لغة PHP.</p>
+                </div>
+            </div>
+            <div onclick="document.location='web10.html'" class="div-box" id="d10">
+                <div class="overlay-text">
+                    <h2>لغة HTML</h2>
+                    <p>تعلم اساسيات لغة HTML.</p>
+                </div>
+            </div>
+            <div onclick="document.location='web11.html'" class="div-box" id="d11">
+                <div class="overlay-text">
+                    <h2>لغة CSS</h2>
+                    <p>تعلم اساسيات لغة CSS.</p>
+                </div>
+            </div>
+            <div onclick="document.location='web12.html'" class="div-box" id="d12">
+                <div class="overlay-text">
+                    <h2>لغة JavaScript</h2>
+                    <p>تعلم اساسيات لغة JavaScript.</p>
+                </div>
+            </div>
+            <div onclick="document.location='web13.html'" class="div-box" id="d13">
+                <div class="overlay-text">
+                    <h2>لغة SQL</h2>
+                    <p>تعلم اساسيات لغة SQL.</p>
+                </div>
+            </div>
+            
 
-    /* تعديل النصوص ليتناسب مع الموبايل */
-    header .logo {
-        font-size: 24px;
-    }
 
-    header ul {
-        flex-direction: column;
-        text-align: center;
-    }
+    </div>
 
-    header ul li {
-        margin-bottom: 10px;
-    }
 
-    .container {
-        grid-template-columns: 1fr; /* جعل الأعمدة عمودية */
-        width: 100%;
-    }
 
-    .div-box {
-        width: 90%;
-        margin: 10px auto; /* جعل العناصر تأخذ عرضاً أكبر على الموبايل */
-        height: 180px; /* تقليل ارتفاع الصناديق */
-    }
 
-    .video-container {
-        flex-direction: column; /* وضع الفيديو والنص بشكل عمودي */
-    }
 
-    .video-container .video-gif {
-        width: 80%;
-        margin-bottom: 20px;
-    }
+<br>
+<br>
 
-    /* تغيير تصميم الفوتر ليتناسب مع الموبايل */
-    .footer-container {
-        flex-direction: column;
-        align-items: center;
-    }
 
-    .footer-section {
-        min-width: auto;
-        margin-bottom: 15px;
-        text-align: center;
-    }
 
-    .footer-bottom {
-        font-size: 12px;
-    }
-}
 
-/* استعلامات الوسائط للأجهزة الصغيرة جداً (مثل الهواتف) */
-@media (max-width: 480px) {
-    /* تصغير النصوص والمسافات */
-    .search-box input {
-        font-size: 14px;
-    }
 
-    .div-box {
-        height: 150px;
-        font-size: 14px;
-    }
 
-    .video-container .video-gif {
-        width: 100%;
-        max-width: 400px;
-    }
 
-    .footer-bottom {
-        font-size: 10px;
-    }
-}
 
-@media (max-width: 768px) {
-    .video-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
 
-    .video-container .video-gif {
-        width: 90%;
-        max-width: 100%;
-    }
 
-    .text-content {
-        margin-right: 0;
-        font-size: 16px;
-    }
 
-    .container {
-        grid-template-columns: 1fr;
-        width: 100%;
-        padding: 10px;
-        justify-items: center;
-    }
 
-    .div-box {
-        width: 90%;
-    }
 
-    .search-box {
-        width: 150px;
-    }
-
-    .search-box:hover {
-        width: 180px;
-    }
-
-    header ul {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    header ul li {
-        margin-right: 0;
-    }
-}
-
+     <!-- قسم "معلومات عني" و "تواصل معي" في أسفل الصفحة -->
+     <footer>
+        <div class="footer-container" id="footer">
+            <div class="footer-section" id="about-us">
+                <h3>من نحن</h3>
+                <p>نحن شركة متخصصة في تطوير مواقع الويب وتقديم حلول تقنية متكاملة.</p>
+            </div>
+            <div class="footer-section" id="contact">
+                <h3>تواصل معنا</h3>
+                <p>📧 <a href="mailto:abdelwahabhagag3@gmail.com">abdelwahabhagag3@gmail.com</a></p>
+                <p>📞 <a href="tel:+201286865533">+201286865533</a></p>
+                <p>📍 العنوان: الهرم الاول، القاهرة، مصر</p>
+            </div>
+            <div class="footer-section" id="info">
+                <h3>معلومات عنا</h3>
+                <p>هدفنا تقديم أفضل الخدمات التقنية لعملائنا ومساعدتهم على النجاح في أعمالهم الرقمية.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 جميع الحقوق محفوظة | عبدالوهاب حجاج
+        </div>
+    </footer>
+    
