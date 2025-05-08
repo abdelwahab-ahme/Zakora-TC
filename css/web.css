@@ -289,3 +289,50 @@ header ul li a:hover, .active {
         font-size: 10px;
     }
 }
+
+@media (max-width: 768px) {
+    .video-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .video-container .video-gif {
+        width: 90%;
+        max-width: 100%;
+    }
+
+    .text-content {
+        margin-right: 0;
+        font-size: 16px;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        width: 100%;
+        padding: 10px;
+        justify-items: center;
+    }
+
+    .div-box {
+        width: 90%;
+    }
+
+    .search-box {
+        width: 150px;
+    }
+
+    .search-box:hover {
+        width: 180px;
+    }
+
+    header ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    header ul li {
+        margin-right: 0;
+    }
+}
+
