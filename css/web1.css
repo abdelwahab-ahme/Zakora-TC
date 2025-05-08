@@ -283,55 +283,61 @@ header ul li a:hover, .active {
     padding: 40px 20px;
 }
 @media (max-width: 768px) {
-    /* تنسيق الفيديو والنص في عمود بدلاً من صف */
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+    }
+
+    header .logo {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    header ul {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        padding: 0;
+    }
+
+    header ul li {
+        margin: 10px 0;
+    }
+
     .video-container {
         flex-direction: column;
-        align-items: center;
-        text-align: center;
         margin-top: 100px;
+        gap: 10px;
         padding: 0 10px;
     }
 
     .video-container .video-gif {
-        width: 90% !important;
-        max-width: 100%;
+        width: 100%;
     }
 
     .text-content {
-        margin: 20px 0 0 0;
         font-size: 16px;
+        margin-right: 0;
         text-align: center;
     }
 
-    /* جعل الـ container عمودياً بعرض كامل */
+    .search-box {
+        width: 100%;
+        max-width: 300px;
+        margin: 10px auto;
+    }
+
     .container {
         grid-template-columns: 1fr;
         width: 100%;
         padding: 10px;
-        justify-items: center;
+        gap: 20px;
     }
 
     .div-box {
-        width: 90%;
-    }
-
-    /* ضبط شريط البحث */
-    .search-box {
-        width: 150px;
-    }
-
-    .search-box:hover {
-        width: 180px;
-    }
-
-    /* تبسيط شريط التنقل */
-    header ul {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    header ul li {
-        margin-right: 0;
+        width: 100%;
+        height: 180px;
     }
 
     .footer-container {
@@ -341,7 +347,7 @@ header ul li a:hover, .active {
     }
 
     #info {
-        direction: rtl;
         text-align: center;
+        direction: rtl;
     }
 }
