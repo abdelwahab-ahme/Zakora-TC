@@ -92,25 +92,32 @@ header ul li a.active {
 
 /* الفيديو */
 .video-container {
-    margin-top: 100px; /* ارتفاع شريط الأدوات */
+    margin-top: 80px; /* ارتفاع شريط الأدوات */
+    position: relative;
+    width: 100%;
+    height: 500px; /* اجعل الفيديو يعرض بشكل ملائم */
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    padding: 20px;
 }
 
-.video-container .video-gif {
-    width: 50%;
-    max-width: 600px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+.video-container img, .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* يضمن ملء الشاشة بشكل جيد */
+    z-index: -1;
 }
 
 .video-container h3 {
+    position: relative;
+    z-index: 1;
     color: white;
     font-size: 24px;
+    text-align: center;
 }
 
 /* المحتوى */
@@ -188,13 +195,7 @@ header ul li a.active {
     }
 
     .video-container {
-        flex-direction: column;
-        margin-top: 120px;
-        text-align: center;
-    }
-
-    .video-container .video-gif {
-        width: 90%;
+        height: 300px; /* تعديل ارتفاع الفيديو على الموبايل */
     }
 
     .video-container h3 {
