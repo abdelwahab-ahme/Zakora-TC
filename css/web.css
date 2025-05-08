@@ -9,163 +9,136 @@ body {
     font-family: 'Arial', sans-serif;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
 @keyframes gradientMove {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-a {
-    text-decoration: none;
-    color: #fff;
-}
-
-/* شريط التنقل العلوي */
+/* شريط التنقل */
 header {
     background: linear-gradient(45deg, #ff007f, #ff7f00, #007fff, #00ff7f);
     background-size: 400% 400%;
     animation: gradientMove 10s ease infinite;
     position: fixed;
+    top: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0px;
-    top: 0;
-    left: 0;
-    padding: 15px 30px;
+    padding: 15px 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    flex-wrap: wrap;
 }
 
 header .logo {
     font-size: 30px;
-    text-transform: uppercase;
     font-weight: bold;
     color: #fff;
 }
 
 header ul {
     display: flex;
-    justify-content: center;
-    align-items: center;
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 header ul li {
-    margin-right: 30px;
+    margin-left: 20px;
 }
 
 header ul li a {
-    padding: 6px 15px;
-    border-radius: 20px;
-    font-size: 18px;
     color: white;
-    transition: all 0.3s ease;
+    padding: 6px 12px;
+    border-radius: 20px;
+    transition: 0.3s;
+    font-size: 18px;
 }
 
-header ul li a:hover, .active {
+header ul li a:hover,
+header ul li a.active {
     background: #fff;
     color: #200016;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* قسم الفيديو والنص */
-.video-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-    gap: 20px;
-    margin-top: 160px; /* تأخير الفيديو تحت الهيدر */
-    padding-top: 30px;
-}
-
-.video-container .video-gif {
-    width: 50%;
-    max-width: 600px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    background-color: transparent;
-}
-
-/* تصميم شريط البحث */
+/* شريط البحث */
 .search-box {
     display: flex;
     align-items: center;
     background: white;
     border-radius: 25px;
     padding: 5px 15px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    width: 200px;
-    transition: all 0.3s ease-in-out;
+    margin-top: 10px;
 }
 
 .search-box input {
     border: none;
     outline: none;
-    flex: 1;
     padding: 8px;
     font-size: 16px;
-    border-radius: 25px;
-    width: 100%;
+    flex: 1;
 }
 
 .search-box button {
     background: none;
     border: none;
-    cursor: pointer;
     font-size: 18px;
-    color: #555;
+    cursor: pointer;
 }
 
-.search-box:hover {
-    width: 250px;
+/* الفيديو */
+.video-container {
+    margin-top: 100px; /* ارتفاع شريط الأدوات */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
 }
 
-/* باقي المحتوى */
+.video-container .video-gif {
+    width: 50%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.video-container h3 {
+    color: white;
+    font-size: 24px;
+}
+
+/* المحتوى */
 .container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
-    width: 900px;
-    height: auto;
-    margin-top: 30px;
+    padding: 30px;
 }
 
 .div-box {
     background: linear-gradient(45deg, #ff007f, #ff7f00, #007fff, #00ff7f);
     background-size: 400% 400%;
     animation: gradientMove 10s ease infinite;
-    width: 250px;
-    background-color: #0f2546;
-    color: white;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 200px;
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .div-box:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    background-color: #1d1d1d;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
 /* الفوتر */
@@ -173,11 +146,9 @@ header ul li a:hover, .active {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    text-align: right;
-    direction: rtl;
     padding: 20px;
     background-color: #161515;
-    color:#fff; 
+    color: white;
 }
 
 .footer-section {
@@ -186,134 +157,52 @@ header ul li a:hover, .active {
     min-width: 200px;
 }
 
-#about-us { order: 1; }
-#contact { order: 2; text-align: center; }
-#info { order: 3; text-align: left; direction: ltr; }
-
 .footer-bottom {
     text-align: center;
     padding: 10px;
     background-color: #161515;
     font-size: 14px;
-    color:#fff; 
+    color: white;
 }
 
-/* تنسيق الموبايل */
+/* موبايل */
 @media (max-width: 768px) {
-    .search-box {
-        width: 90%;
-        margin: 0 auto;
-    }
-
-    header .logo {
-        font-size: 24px;
+    header {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     header ul {
         flex-direction: column;
-        text-align: center;
-    }
-
-    header ul li {
-        margin-bottom: 10px;
-    }
-
-    .container {
-        grid-template-columns: 1fr;
         width: 100%;
     }
 
-    .div-box {
-        width: 90%;
-        margin: 10px auto;
-        height: 180px;
+    header ul li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .search-box {
+        width: 100%;
+        margin: 10px 0;
     }
 
     .video-container {
         flex-direction: column;
-        align-items: center;
+        margin-top: 120px;
         text-align: center;
-        margin-top: 180px; /* زودنا المسافة أسفل الهيدر للموبايل */
     }
 
     .video-container .video-gif {
         width: 90%;
-        max-width: 100%;
-        margin-bottom: 20px;
+    }
+
+    .video-container h3 {
+        font-size: 20px;
     }
 
     .footer-container {
         flex-direction: column;
-        align-items: center;
-    }
-
-    .footer-section {
-        min-width: auto;
-        margin-bottom: 15px;
         text-align: center;
-    }
-
-    .footer-bottom {
-        font-size: 12px;
-    }
-
-    .text-content {
-        margin-right: 0;
-        font-size: 16px;
-    }
-
-    .search-box {
-        width: 150px;
-    }
-
-    .search-box:hover {
-        width: 180px;
-    }
-
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px 20px;
-    }
-
-    header .logo {
-        margin-bottom: 10px;
-    }
-
-    header ul {
-        width: 100%;
-        padding: 0;
-        gap: 10px;
-    }
-
-    header ul li {
-        margin: 5px 0;
-        width: 100%;
-        text-align: right;
-    }
-
-    header ul li a {
-        display: block;
-        width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    .search-box input {
-        font-size: 14px;
-    }
-
-    .div-box {
-        height: 150px;
-        font-size: 14px;
-    }
-
-    .video-container .video-gif {
-        width: 100%;
-        max-width: 400px;
-    }
-
-    .footer-bottom {
-        font-size: 10px;
     }
 }
