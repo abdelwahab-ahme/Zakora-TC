@@ -154,7 +154,45 @@
 
 
 
+<audio id="bg-music" loop>
+    <source src="./mosic.mp3" type="audio/mpeg">
+    متصفحك لا يدعم تشغيل الصوت.
+  </audio>
 
+  <button id="music-control">تشغيل الموسيقى 🎵</button>
+
+  <script>
+    const audio = document.getElementById('bg-music');
+    const btn = document.getElementById('music-control');
+    let isPlaying = false;
+
+    function toggleMusic() {
+      if (isPlaying) {
+        audio.pause();
+        btn.textContent = 'تشغيل الموسيقى 🎵';
+      } else {
+        audio.play();
+        btn.textContent = 'إيقاف الموسيقى 🔇';
+      }
+      isPlaying = !isPlaying;
+    }
+
+    // تشغيل تلقائي بعد أول نقرة في أي مكان
+    document.addEventListener('click', function autoPlayOnce() {
+      if (!isPlaying) {
+        audio.play().then(() => {
+          isPlaying = true;
+          btn.textContent = 'إيقاف الموسيقى 🔇';
+        }).catch((err) => {
+          console.log('فشل التشغيل التلقائي:', err);
+        });
+      }
+      document.removeEventListener('click', autoPlayOnce);
+    });
+
+    btn.addEventListener('click', toggleMusic);
+  </script>    
+    
 
 
 
