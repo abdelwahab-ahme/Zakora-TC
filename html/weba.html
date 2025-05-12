@@ -18,9 +18,10 @@
 
 
 
-    <header>
+<header class="navbar">
         <h2><a href="#" class="logo">hagag</a></h2>
-        <ul>
+         <button class="hamburger" onclick="toggleMenu()">☰</button>
+        <ul class="nav-links" id="navLinks">
             <li><a href="./web.html" class="active">Home</a></li>
             <li><a href="#container">Product</a></li>
             <li><a href="">Shop</a></li>
@@ -186,4 +187,9 @@
             &copy; 2025 جميع الحقوق محفوظة | عبدالوهاب حجاج
         </div>
     </footer>
+         <script>
+  function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("show");
+  }
+</script>
     
