@@ -18,9 +18,10 @@
 
 
 
-    <header>
+     <header class="navbar">
         <h2><a href="#" class="logo">hagag</a></h2>
-        <ul>
+        <button class="hamburger" onclick="toggleMenu()">☰</button>
+        <ul class="nav-links" id="navLinks">
             <li><a href="#" class="active">Home</a></li>
             <li><a href="#container">Product</a></li>
             <li><a href="#">Shop</a></li>
@@ -157,6 +158,11 @@
 
 
 
+    <script>
+  function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("show");
+  }
+</script>
 
 
 <script src="./js/bootstrap.js"></script>
