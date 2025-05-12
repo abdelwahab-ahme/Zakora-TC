@@ -282,72 +282,56 @@ header ul li a:hover, .active {
     gap: 20px;
     padding: 40px 20px;
 }
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px 20px;
-    }
-
-    header .logo {
-        font-size: 22px;
-        margin-bottom: 10px;
-    }
-
-    header ul {
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-        padding: 0;
-    }
-
-    header ul li {
-        margin: 10px 0;
-    }
-
-    .video-container {
-        flex-direction: column;
-        margin-top: 100px;
-        gap: 10px;
-        padding: 0 10px;
-    }
-
-    .video-container .video-gif {
-        width: 100%;
-    }
-
-    .text-content {
-        font-size: 16px;
-        margin-right: 0;
-        text-align: center;
-    }
-
-    .search-box {
-        width: 100%;
-        max-width: 300px;
-        margin: 10px auto;
-    }
-
-    .container {
-        grid-template-columns: 1fr;
-        width: 100%;
-        padding: 10px;
-        gap: 20px;
-    }
-
-    .div-box {
-        width: 100%;
-        height: 180px;
-    }
-
-    .footer-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
-    }
-
-    #info {
-        text-align: center;
-        direction: rtl;
-    }
+/* تنسيق أساسي */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+  color: white;
 }
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+}
+
+/* زر الهمبرغر مخفي في الكمبيوتر */
+.hamburger {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+}
+
+/* عند تصغير الشاشة – موبايل */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #444;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+}
+
+
