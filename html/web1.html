@@ -9,14 +9,19 @@
       margin: 0;
       font-family: Arial, sans-serif;
       background: linear-gradient(45deg, #ff007f, #ff7f00, #007fff, #00ff7f);
-    background-size: 400% 400%;
-    animation: gradientMove 10s ease infinite;
-    transition: all 0.3s ease;
+      background-size: 400% 400%;
+      animation: gradientMove 10s ease infinite;
+    }
+
+    @keyframes gradientMove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
     }
 
     .sidebar {
       width: 300px;
-      background-color: rgba(0, 0, 0, 0.8); /* أسود شفاف */
+      background-color: rgba(0, 0, 0, 0.85);
       padding: 20px;
       border-left: 2px solid #333;
       height: 100vh;
@@ -27,7 +32,7 @@
     .sidebar h3 {
       margin-top: 20px;
       margin-bottom: 5px;
-      color: #cccccc; /* لون أفتح للعنوان */
+      color: #bbbbbb;
     }
 
     .sidebar ul {
@@ -61,14 +66,23 @@
     }
 
     h1.title {
-      color: #3700ff;
+      color: #007bff;
       margin-bottom: 20px;
     }
 
-    iframe {
+    #videoContainer {
       width: 100%;
       height: 500px;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    video, iframe {
+      width: 100%;
+      height: 100%;
       border: none;
+      border-radius: 10px;
     }
 
     .nav-buttons {
@@ -103,7 +117,19 @@
   <div class="content">
     <h1 class="title">اساسيات الحاسوب</h1>
     <h2>مشاهدة الدرس</h2>
-    <iframe id="videoFrame" src="https://www.youtube.com/embed/" allowfullscreen></iframe>
+    <div id="videoContainer">
+      <video id="videoPlayer" controls style="display: none;">
+        <source src="" type="video/mp4">
+        متصفحك لا يدعم تشغيل الفيديو.
+      </video>
+
+      <iframe id="youtubePlayer"
+              style="display: none;"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+      </iframe>
+    </div>
 
     <div class="nav-buttons">
       <button onclick="prevVideo()" id="prevBtn">السابق</button>
@@ -114,20 +140,24 @@
   <div class="sidebar">
     <h3>Week 0</h3>
     <ul>
-      <li data-id="dQw4w9WgXcQ" onclick="loadVideo('dQw4w9WgXcQ')">
-        الدرس الأول <span class="status"></span>
+      <li data-id="w0l1" onclick="loadVideo('https://www.youtube.com/embed/jIQBfpi1S7Q', 'w0l1')">
+        الدرس التمهيدي <span class="status"></span>
       </li>
-      <li data-id="3GwjfUFyY6M" onclick="loadVideo('3GwjfUFyY6M')">
+      <li data-id="w0l2" onclick="loadVideo('', 'w0l2')">
         الدرس الثاني <span class="status"></span>
+      </li>
+      <li data-id="w1l1" onclick="loadVideo('', 'w1l1')">
+        الدرس الثالث <span class="status"></span>
       </li>
     </ul>
 
     <h3>Week 1</h3>
     <ul>
-      <li data-id="L_jWHffIx5E" onclick="loadVideo('L_jWHffIx5E')">
-        الدرس الأول <span class="status"></span>
+      
+      <li data-id="w1l2" onclick="loadVideo('', 'w1l2')">
+        الدرس الاول <span class="status"></span>
       </li>
-      <li data-id="kXYiU_JCYtU" onclick="loadVideo('kXYiU_JCYtU')">
+      <li data-id="w1l2" onclick="loadVideo('', 'w1l2')">
         الدرس الثاني <span class="status"></span>
       </li>
     </ul>
@@ -135,26 +165,39 @@
 
   <script>
     const videos = [
-      'dQw4w9WgXcQ',
-      '3GwjfUFyY6M',
-      'L_jWHffIx5E',
-      'kXYiU_JCYtU'
+      { id: 'w0l1', file: 'https://www.youtube.com/embed/jIQBfpi1S7Q' },
+      { id: 'w0l2', file: '' },
+      { id: 'w1l1', file: '' },
+      { id: 'w1l2', file: '' }
     ];
 
     let currentIndex = -1;
 
-    function loadVideo(videoId) {
-      const iframe = document.getElementById("videoFrame");
-      iframe.src = `https://www.youtube.com/embed/${videoId}`;
-      currentIndex = videos.indexOf(videoId);
+    function loadVideo(filePath, videoId) {
+      const video = document.getElementById("videoPlayer");
+      const youtube = document.getElementById("youtubePlayer");
+
+      if (filePath.includes("youtube.com/embed")) {
+        youtube.src = filePath;
+        youtube.style.display = "block";
+        video.style.display = "none";
+        video.pause();
+      } else {
+        video.querySelector("source").src = filePath;
+        video.load();
+        video.style.display = "block";
+        youtube.style.display = "none";
+        youtube.src = "";
+      }
+
+      currentIndex = videos.findIndex(v => v.id === videoId);
       localStorage.setItem(videoId, 'watched');
       updateWatchedStatus();
       updateNavButtons();
     }
 
     function updateWatchedStatus() {
-      const items = document.querySelectorAll('.sidebar li');
-      items.forEach(item => {
+      document.querySelectorAll('.sidebar li').forEach(item => {
         const id = item.getAttribute('data-id');
         const status = item.querySelector('.status');
         if (localStorage.getItem(id) === 'watched') {
@@ -174,20 +217,22 @@
 
     function nextVideo() {
       if (currentIndex < videos.length - 1) {
-        loadVideo(videos[currentIndex + 1]);
+        const next = videos[currentIndex + 1];
+        loadVideo(next.file, next.id);
       }
     }
 
     function prevVideo() {
       if (currentIndex > 0) {
-        loadVideo(videos[currentIndex - 1]);
+        const prev = videos[currentIndex - 1];
+        loadVideo(prev.file, prev.id);
       }
     }
 
     window.onload = function () {
       updateWatchedStatus();
-      loadVideo(videos[0]);
-    }
+      loadVideo(videos[0].file, videos[0].id);
+    };
   </script>
 
 </body>
