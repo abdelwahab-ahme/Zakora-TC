@@ -83,10 +83,10 @@ header ul li a:hover, .active {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 120px; /* جعل المسافة بين الفيديو وشريط الأدوات */
+    margin-top: 120px;
     margin-bottom: 20px;
     width: 100%;
-    gap: 20px; /* إضافة مسافة بين الفيديو والنص */
+    gap: 20px;
 }
 
 .video-container .video-gif {
@@ -94,7 +94,7 @@ header ul li a:hover, .active {
     max-width: 600px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    background-color: transparent; /* الخلفية شفافة */
+    background-color: transparent;
 }
 
 .text-content {
@@ -136,12 +136,11 @@ header ul li a:hover, .active {
     color: #555;
 }
 
-/* تأثير تكبير شريط البحث عند التفاعل */
 .search-box:hover {
     width: 250px;
 }
 
-/* باقي المحتوى */
+/* الحاوية */
 .container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -150,14 +149,16 @@ header ul li a:hover, .active {
     width: 900px;
     height: auto;
     margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
+/* صناديق المحتوى */
 .div-box {
     background: linear-gradient(45deg, #ff007f, #ff7f00, #007fff, #00ff7f);
     background-size: 400% 400%;
     animation: gradientMove 10s ease infinite;
     width: 250px;
-    background-color: #0f2546;
     color: white;
     text-align: center;
     display: flex;
@@ -168,14 +169,14 @@ header ul li a:hover, .active {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
 }
-/* تأثير عند الوقوف بالماوس */
+
 .div-box:hover {
-    transform: translateY(-10px); /* رفع العنصر قليلاً لأعلى */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* إضافة ظل أكبر عند الوقوف */
-    background-color: #1d1d1d; /* تغيير الخلفية */
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    background-color: #1d1d1d;
 }
 
-/* تصميم قسم "معلومات عني" */
+/* الفوتر */
 .footer-container {
     display: flex;
     justify-content: space-between;
@@ -215,56 +216,84 @@ header ul li a:hover, .active {
     font-size: 14px;
     color:#fff; 
 }
-/* تنسيق أساسي */
+
+/* شريط التنقل للموبايل */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #333;
-  padding: 10px 20px;
-  color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    color: white;
 }
 
 .nav-links {
-  list-style: none;
-  display: flex;
-  gap: 20px;
+    list-style: none;
+    display: flex;
+    gap: 20px;
 }
 
 .nav-links li a {
-  color: white;
-  text-decoration: none;
+    color: white;
+    text-decoration: none;
 }
 
-/* زر الهمبرغر مخفي في الكمبيوتر */
 .hamburger {
-  display: none;
-  font-size: 24px;
-  background: none;
-  border: none;
-  color: white;
-}
-
-/* عند تصغير الشاشة – موبايل */
-@media (max-width: 768px) {
-  .hamburger {
-    display: block;
-  }
-
-  .nav-links {
     display: none;
-    flex-direction: column;
-    background-color: #444;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    padding: 10px;
-    border-radius: 8px;
-  }
-
-  .nav-links.show {
-    display: flex;
-  }
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
 }
 
+/* تحسين العرض للموبايل */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
 
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #444;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        width: 90%;
+        margin: 30px auto;
+    }
+
+    .div-box {
+        width: 100%;
+        height: auto;
+    }
+
+    .video-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .video-container .video-gif {
+        width: 90%;
+    }
+
+    .text-content {
+        margin-right: 0;
+        margin-top: 15px;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
