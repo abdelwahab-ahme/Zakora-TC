@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="../icon/ايقونة.ico" type="image/x-icon">
+  <title>امتحان تجريبي</title>
+  <style>
+    body {
+      font-family: Arial;
+      background-color: #e0f7fa;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      font-weight: bold;
+    }
+    input[type="text"] {
+      width: 300px;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+    }
+    .question {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 20px;
+    }
+    button {
+      background-color: #0288d1;
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0277bd;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #006064;
+    }
+    #timer {
+      font-size: 18px;
+      font-weight: bold;
+      color: red;
+      margin-bottom: 20px;
+    }
+    .disabled {
+      pointer-events: none;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+
+<h2>امتحان من 10 أسئلة</h2>
+<div id="timer">الوقت المتبقي: 20:00</div>
+<label>ادخل اسمك الثلاثي:</label><br />
+<input type="text" id="username" required /><br /><br />
+
+<div id="quiz">
+  <!-- أسئلة -->
+</div>
+
+<button id="submitBtn" onclick="submitExam()">إنهاء الامتحان</button>
+
+<p id="result"></p>
+
+<script>
+const questions = [
+  { question: "ما عاصمة مصر؟", correct: "القاهرة" },
+  { question: "2 + 2 = ؟", correct: "4" },
+  { question: "ما لون السماء؟", correct: "أزرق" },
+  { question: "عكس كلمة طويل؟", correct: "قصير" },
+  { question: "كم عدد حروف كلمة (مدرسة)؟", correct: "5" },
+  { question: "من مؤسس شركة أبل؟", correct: "ستيف جوبز" },
+  { question: "ما هو العنصر الكيميائي للماء؟", correct: "H2O" },
+  { question: "ما أكبر قارة؟", correct: "آسيا" },
+  { question: "ما جمع كلمة كتاب؟", correct: "كتب" },
+  { question: "كم ثانية في الدقيقة؟", correct: "60" }
+];
+
+const quizDiv = document.getElementById("quiz");
+
+questions.forEach((q, i) => {
+  quizDiv.innerHTML += `
+    <div class="question">
+      <label>${i + 1}. ${q.question}</label><br />
+      <input type="text" id="q${i}" />
+    </div>
+  `;
+});
+
+function submitExam() {
+  const name = document.getElementById("username").value.trim();
+  if (!name) {
+    alert("يرجى إدخال الاسم الثلاثي");
+    return;
+  }
+
+  let score = 0;
+  questions.forEach((q, i) => {
+    const answer = document.getElementById(`q${i}`).value.trim();
+    if (answer === q.correct) score++;
+  });
+
+  document.getElementById("result").innerText = `تم الانتهاء، درجتك: ${score}/10`;
+
+  document.getElementById("submitBtn").disabled = true;
+  document.getElementById("quiz").classList.add("disabled");
+
+  const formData = new FormData();
+  formData.append("name", name);
+  formData.append("score", score);
+
+  fetch("https://script.google.com/macros/s/AKfycbz9K53TskDB-zZoXMKCJ8FKZAyWjo-6Hl9m9G_L-XFpRQpnFIfCIOzJJocsxjjtmy7Hkg/exec", {
+    method: "POST",
+    body: formData,
+  })
+    .then((res) => res.text())
+    .then((txt) => console.log(txt))
+    .catch((err) => console.error("فشل الإرسال", err));
+}
+
+// العداد التنازلي للوقت (20 دقيقة)
+let timeLeft = 20 * 60;
+const timerElement = document.getElementById("timer");
+
+const timerInterval = setInterval(() => {
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
+  timerElement.textContent = `الوقت المتبقي: ${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+
+  if (timeLeft <= 0) {
+    clearInterval(timerInterval);
+    submitExam();
+    timerElement.textContent = "انتهى الوقت! تم إرسال الامتحان تلقائيًا.";
+  }
+  timeLeft--;
+}, 1000);
+</script>
+
+</body>
+</html>

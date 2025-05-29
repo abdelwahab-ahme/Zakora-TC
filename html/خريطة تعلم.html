@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="../icon/ايقونة.ico" type="image/x-icon">
+  <title>خريطة التعلم البرمجية</title>
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(45deg, #ff007f, #ff7f00, #007fff, #00ff7f);
+      background-size: 400% 400%;
+      animation: gradientBG 12s ease infinite;
+      margin: 0;
+      padding: 40px;
+      color: #333;
+    }
+     @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #ffffff;
+    }
+    .roadmap {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .card {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+    .card h2 {
+      color: #0288d1;
+      margin-bottom: 15px;
+    }
+    .card ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .card ul li {
+      margin-bottom: 8px;
+      padding: 6px 10px;
+      border-right: 4px solid #0288d1;
+      background: #f5fafd;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+    
+
+<h1>خريطة التعلم البرمجية - جميع التخصصات</h1>
+
+<div class="roadmap">
+  <div class="card">
+    <h2>تطوير الويب Web Development</h2>
+    <ul>
+      <li>HTML / CSS / JavaScript</li>
+      <li>Git و GitHub</li>
+      <li>React / Vue / Angular</li>
+      <li>Node.js / PHP / Python</li>
+      <li>قواعد البيانات: MongoDB, MySQL</li>
+      <li>REST APIs / GraphQL</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>تطوير تطبيقات الموبايل</h2>
+    <ul>
+      <li>Java / Kotlin (Android)</li>
+      <li>Swift (iOS)</li>
+      <li>Flutter</li>
+      <li>React Native</li>
+      <li>نشر التطبيقات على المتاجر</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>علم البيانات Data Science</h2>
+    <ul>
+      <li>Python</li>
+      <li>Pandas / NumPy</li>
+      <li>تحليل البيانات</li>
+      <li>رسم البيانات: Matplotlib, Seaborn</li>
+      <li>Machine Learning أساسيات</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>الذكاء الاصطناعي و Machine Learning</h2>
+    <ul>
+      <li>Python</li>
+      <li>خوارزميات تعلم الآلة</li>
+      <li>TensorFlow / PyTorch</li>
+      <li>مشاريع تحليل الصور / النصوص</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>أمن المعلومات Cybersecurity</h2>
+    <ul>
+      <li>أساسيات الشبكات</li>
+      <li>Linux / Kali</li>
+      <li>التشفير و تحليل الثغرات</li>
+      <li>أدوات اختبار الاختراق: Nmap, Metasploit</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>DevOps و SRE</h2>
+    <ul>
+      <li>Linux / Git</li>
+      <li>Docker و Kubernetes</li>
+      <li>CI/CD Pipelines</li>
+      <li>Terraform / Cloud</li>
+      <li>Monitoring: Prometheus / Grafana</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>برمجة الألعاب Game Development</h2>
+    <ul>
+      <li>Unity (C#)</li>
+      <li>Unreal Engine (C++)</li>
+      <li>مفاهيم الرسوميات والفيزياء</li>
+      <li>تصميم المراحل والمنطق</li>
+    </ul>
+  </div>
+</div>
+
+</body>
+</html>
