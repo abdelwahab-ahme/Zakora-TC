@@ -5,68 +5,93 @@
   <link rel="icon" href="../icon/ايقونة.ico" type="image/x-icon">
   <title>امتحان تجريبي</title>
   <style>
+  body {
+    font-family: Arial;
+    background-color: #e0f7fa;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  label {
+    font-weight: bold;
+  }
+  input[type="text"] {
+    width: 90%;
+    max-width: 400px;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  .question {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+  }
+  button {
+    background-color: #0288d1;
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  button:hover {
+    background-color: #0277bd;
+  }
+  #result {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #006064;
+    text-align: center;
+  }
+  #timer {
+    font-size: 18px;
+    font-weight: bold;
+    color: red;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .disabled {
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  /* Responsive for mobile */
+  @media (max-width: 480px) {
     body {
-      font-family: Arial;
-      background-color: #e0f7fa;
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    label {
-      font-weight: bold;
+      padding: 15px;
     }
     input[type="text"] {
-      width: 300px;
-      padding: 10px;
-      margin-top: 5px;
-      margin-bottom: 15px;
-      font-size: 16px;
-      border: 1px solid #aaa;
-      border-radius: 5px;
-    }
-    .question {
-      background-color: #ffffff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 600px;
-      margin-bottom: 20px;
+      font-size: 14px;
     }
     button {
-      background-color: #0288d1;
-      color: white;
-      padding: 12px 24px;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+      width: 100%;
+      font-size: 15px;
     }
-    button:hover {
-      background-color: #0277bd;
+    .question {
+      padding: 15px;
     }
-    #result {
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
-      color: #006064;
-    }
-    #timer {
-      font-size: 18px;
-      font-weight: bold;
-      color: red;
-      margin-bottom: 20px;
-    }
-    .disabled {
-      pointer-events: none;
-      opacity: 0.6;
-    }
-  </style>
+  }
+</style>
+
 </head>
 <body>
 
