@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>بداية الكورس</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            background: linear-gradient(-45deg, #1e3c72, #2a5298, #1e3c72, #2a5298);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease;
+        }
+
+        .countdown {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            animation: fadeInUp 2s ease;
+        }
+
+        .countdown div {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 20px;
+            border-radius: 15px;
+            min-width: 90px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .countdown div:hover {
+            transform: scale(1.1);
+        }
+
+        .countdown div span {
+            display: block;
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .countdown div label {
+            font-size: 1em;
+            color: #ddd;
+            letter-spacing: 1px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .countdown div {
+                min-width: 70px;
+                padding: 15px;
+            }
+
+            .countdown div span {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>جاري بداية الكورس بعد:</h1>
+    <div class="countdown" id="countdown">
+        <div>
+            <span id="days">0</span>
+            <label>يوم</label>
+        </div>
+        <div>
+            <span id="hours">0</span>
+            <label>ساعة</label>
+        </div>
+        <div>
+            <span id="minutes">0</span>
+            <label>دقيقة</label>
+        </div>
+        <div>
+            <span id="seconds">0</span>
+            <label>ثانية</label>
+        </div>
+    </div>
+
+    <script>
+        function getNextTuesday() {
+            const today = new Date();
+            const dayOfWeek = today.getDay();
+            const daysUntilTuesday = (2 - dayOfWeek + 7) % 7 || 7;
+            const nextTuesday = new Date(today);
+            nextTuesday.setDate(today.getDate() + daysUntilTuesday);
+            nextTuesday.setHours(9, 0, 0, 0); // يبدأ الساعة 9 صباحًا
+            return nextTuesday;
+        }
+
+        const countdownDate = getNextTuesday();
+
+        const countdownFunction = setInterval(function () {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "<h2>انطلق الكورس!</h2>";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
