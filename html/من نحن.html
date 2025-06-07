@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>تصفح كورسات</title>
+    <link rel="icon" href="../icon/ايقونة.ico" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+
+        body {
+            background: linear-gradient(135deg, #1f1c2c, #928DAB);
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 40px;
+            color: #fff;
+        }
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            overflow: hidden;
+            text-align: center;
+            padding: 30px 20px;
+            width: 320px;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1.2s ease forwards;
+            transform: translateY(20px);
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid #00c6ff;
+            margin-bottom: 20px;
+            transition: transform 0.4s ease, filter 0.4s ease;
+            filter: contrast(1.15) brightness(1.05) saturate(1.1);
+        }
+
+        .profile-img:hover {
+            transform: scale(1.08);
+            filter: contrast(1.2) brightness(1.1) saturate(1.2);
+        }
+
+        .course-name {
+            font-size: 26px;
+            color: #f1f1f1;
+            margin-bottom: 12px;
+            font-weight: 900;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .my-name {
+            font-size: 20px;
+            color: #e0e0e0;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        }
+
+        .start-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .start-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .social-icons img {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            cursor: pointer;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.2);
+            filter: brightness(1.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cards-container">
+
+        <!-- كارت رقم 1 -->
+        <div class="card">
+            <img src="../img/WhatsApp Image 2025-06-04 at 15.13.31_3cce050a.jpg" alt="صورة مهندس عبدالوهاب احمد عبدالوهاب" class="profile-img" />
+            <div class="course-name">CS50 بالعربي</div>
+            <div class="my-name">مهندس عبدالوهاب أحمد عبدالوهاب</div>
+            
+            <a href="./cs50.html" class="start-btn">ابدأ الكورس</a>
+            
+            <div class="social-icons">
+                <!-- هنا تحط صور الأيقونات بدل example.png -->
+                <a href="https://www.fb.com/l/6lp1kJRRR" target="_blank">
+                    <img src="../icon/فيس.png" alt="Facebook" />
+                </a>
+                <a href="https://wa.me/201286865533" target="_blank">
+                    <img src="../icon/وتس.png" alt="WhatsApp" />
+                </a>
+                <a href="www.linkedin.com/in/abdelwahab-hagag-952a66242" target="_blank">
+                    <img src="../icon/لينكدان.png" alt="LinkedIn" />
+                </a>
+                <!-- <a href="https://github.com" target="_blank">
+                    <img src="../icon/جيت.png" alt="GitHub" />
+                </a> -->
+            </div>
+        </div>
+        <!-- كارت رقم 2 -->
+        <div class="card">
+            <img src="../img/عبدالرحمن.jpg" alt="صورة مهندس عبدالوهاب احمد عبدالوهاب" class="profile-img" />
+            <div class="course-name">basic my sql</div>
+            <div class="my-name">مهندس عبدالرحمن أحمد فاروق</div>
+            
+            <a href="./web13.html" class="start-btn">ابدأ الكورس</a>
+            
+            <div class="social-icons">
+                
+                <a href="https://www.facebook.com/share/193HupWXnx/" target="_blank">
+                    <img src="../icon/فيس.png" alt="Facebook" />
+                </a>
+                <a href="https://wa.me/201127780071" target="_blank">
+                    <img src="../icon/وتس.png" alt="WhatsApp" />
+                </a>
+                <a href="https://www.linkedin.com/in/abdelrahman-el-dahan-608993240?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app " target="_blank">
+                    <img src="../icon/لينكدان.png" alt="LinkedIn" />
+                </a>
+            </div>
+        </div>
+        <!-- كارت رقم 3 -->
+        <div class="card">
+            <img src="../img/عبدالرحمن 2.jpg" alt="صورة مهندس عبدالوهاب احمد عبدالوهاب" class="profile-img" />
+            <div class="course-name">C# basic </div>
+            <div class="my-name">مهندس عبدالرحمن أحمد فاروق</div>
+            
+            <a href="./web6.html" class="start-btn">ابدأ الكورس</a>
+            
+            <div class="social-icons">
+                
+                <a href="https://www.facebook.com/share/193HupWXnx/" target="_blank">
+                    <img src="../icon/فيس.png" alt="Facebook" />
+                </a>
+                <a href="https://wa.me/201127780071" target="_blank">
+                    <img src="../icon/وتس.png" alt="WhatsApp" />
+                </a>
+                <a href="https://www.linkedin.com/in/abdelrahman-el-dahan-608993240?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+                    <img src="../icon/لينكدان.png" alt="LinkedIn" />
+                </a>
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+</html>
