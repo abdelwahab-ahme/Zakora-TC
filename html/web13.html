@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>لغة SQL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       display: flex;
+      flex-wrap: wrap;
       margin: 0;
       font-family: Arial, sans-serif;
       background: linear-gradient(45deg, #ff007f, #ff7f00, #007fff, #00ff7f);
@@ -14,9 +16,9 @@
     }
 
     @keyframes gradientMove {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .sidebar {
@@ -63,6 +65,7 @@
     .content {
       flex-grow: 1;
       padding: 20px;
+      min-width: 300px;
     }
 
     h1.title {
@@ -75,7 +78,7 @@
       height: 500px;
       border-radius: 10px;
       overflow: hidden;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     video, iframe {
@@ -85,10 +88,20 @@
       border-radius: 10px;
     }
 
+    #videoDescription {
+      background-color: rgba(255, 255, 255, 0.85);
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 20px;
+      font-size: 1em;
+      line-height: 1.6;
+    }
+
     .nav-buttons {
       margin-top: 15px;
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
     }
 
     .nav-buttons button {
@@ -100,6 +113,8 @@
       cursor: pointer;
       border-radius: 6px;
       transition: background-color 0.2s ease;
+      margin: 5px 0;
+      flex: 1 1 45%;
     }
 
     .nav-buttons button:hover {
@@ -110,16 +125,40 @@
       background-color: #ccc;
       cursor: not-allowed;
     }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        height: auto;
+        border-left: none;
+        border-bottom: 2px solid #333;
+      }
+
+      #videoContainer {
+        height: 300px;
+      }
+
+      .nav-buttons button {
+        flex: 1 1 100%;
+      }
+    }
   </style>
 </head>
+
 <body>
 
   <div class="content">
     <h1 class="title">لغة SQL</h1>
+    <h2>مشاهدة الدرس</h2>
 
     <div id="videoContainer">
       <video id="videoPlayer" controls style="display: none;">
-        <source src="" type="video/mp4">
+        <source src="" type="video/mp4" />
         متصفحك لا يدعم تشغيل الفيديو.
       </video>
 
@@ -131,6 +170,10 @@
       </iframe>
     </div>
 
+    <div id="videoDescription">
+      <strong>وصف الفيديو:</strong> اختر فيديو من القائمة الجانبية لمشاهدته. ستظهر هنا تفاصيل الدرس الذي تقوم بمشاهدته.
+    </div>
+
     <div class="nav-buttons">
       <button onclick="prevVideo()" id="prevBtn">السابق</button>
       <button onclick="nextVideo()" id="nextBtn">التالي</button>
@@ -140,24 +183,23 @@
   <div class="sidebar">
     <h3>Week 0</h3>
     <ul>
-      <li data-id="w0l1" onclick="loadVideo('', 'w0l1')">
+      <li data-id="w0l1" data-desc="مقدمة عن لغة SQL وأساسياتها." onclick="loadVideo('https://www.youtube.com/embed/Eml7-Z3jN0I', 'w0l1')">
         الدرس التمهيدي <span class="status"></span>
       </li>
-<!--       <li data-id="w0l2" onclick="loadVideo('', 'w0l2')">
+      <!-- <li data-id="w0l2" data-desc="الدرس الثاني حول المتغيرات وأنواع البيانات." onclick="loadVideo('', 'w0l2')">
         الدرس الثاني <span class="status"></span>
       </li>
-       <li data-id="w1l1" onclick="loadVideo('', 'w1l1')">
+      <li data-id="w1l1" data-desc="الدرس الثالث: الحلقات والشروط." onclick="loadVideo('', 'w1l1')">
         الدرس الثالث <span class="status"></span>
       </li> -->
     </ul>
 
-<!--     <h3>Week 1</h3>
+    <!-- <h3>Week 1</h3>
     <ul>
-     
-      <li data-id="w1l2" onclick="loadVideo('video/SQL/SQL-الدرس-الرابع.mp4', 'w1l2')">
+      <li data-id="w1l2" data-desc="الدرس الأول: الدوال في C#." onclick="loadVideo('', 'w1l2')">
         الدرس الاول <span class="status"></span>
       </li>
-      <li data-id="w1l2" onclick="loadVideo('video/SQL/SQL-الدرس-الرابع.mp4', 'w1l2')">
+      <li data-id="w1l3" data-desc="الدرس الثاني: البرمجة الكائنية." onclick="loadVideo('', 'w1l3')">
         الدرس الثاني <span class="status"></span>
       </li>
     </ul>
@@ -165,10 +207,11 @@
 
   <script>
     const videos = [
-      // { id: 'w0l1', file: 'https://www.youtube.com/embed/Vf1nx8zzpac' },
-      { id: 'w0l2', file: '' },
-      { id: 'w1l1', file: '' },
-      { id: 'w1l2', file: '' }
+      { id: 'w0l1', file: 'https://www.youtube.com/embed/Eml7-Z3jN0I', desc: 'مقدمة عن لغة SQL وأساسياتها.' },
+      { id: 'w0l2', file: '', desc: 'الدرس الثاني حول المتغيرات وأنواع البيانات.' },
+      { id: 'w1l1', file: '', desc: 'الدرس الثالث: الحلقات والشروط.' },
+      { id: 'w1l2', file: '', desc: 'الدرس الأول: الدوال في SQL.' },
+      { id: 'w1l3', file: '', desc: 'الدرس الثاني: البرمجة الكائنية.' }
     ];
 
     let currentIndex = -1;
@@ -176,6 +219,9 @@
     function loadVideo(filePath, videoId) {
       const video = document.getElementById("videoPlayer");
       const youtube = document.getElementById("youtubePlayer");
+      const descBox = document.getElementById("videoDescription");
+
+      const videoData = videos.find(v => v.id === videoId);
 
       if (filePath.includes("youtube.com/embed")) {
         youtube.src = filePath;
@@ -189,6 +235,8 @@
         youtube.style.display = "none";
         youtube.src = "";
       }
+
+      descBox.innerHTML = `<strong>وصف الفيديو:</strong> ${videoData.desc}`;
 
       currentIndex = videos.findIndex(v => v.id === videoId);
       localStorage.setItem(videoId, 'watched');
