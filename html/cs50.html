@@ -6,6 +6,7 @@
   <style>
     body {
       display: flex;
+      flex-wrap: wrap;
       margin: 0;
       font-family: Arial, sans-serif;
       background: linear-gradient(45deg, #ff007f, #ff7f00, #007fff, #00ff7f);
@@ -63,6 +64,7 @@
     .content {
       flex-grow: 1;
       padding: 20px;
+      min-width: 300px;
     }
 
     h1.title {
@@ -75,7 +77,7 @@
       height: 500px;
       border-radius: 10px;
       overflow: hidden;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     video, iframe {
@@ -84,11 +86,20 @@
       border: none;
       border-radius: 10px;
     }
+    #videoDescription {
+      background-color: rgba(255, 255, 255, 0.85);
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 20px;
+      font-size: 1em;
+      line-height: 1.6;
+    }
 
     .nav-buttons {
       margin-top: 15px;
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
     }
 
     .nav-buttons button {
@@ -100,6 +111,8 @@
       cursor: pointer;
       border-radius: 6px;
       transition: background-color 0.2s ease;
+      margin: 5px 0;
+      flex: 1 1 45%;
     }
 
     .nav-buttons button:hover {
@@ -109,6 +122,27 @@
     .nav-buttons button:disabled {
       background-color: #ccc;
       cursor: not-allowed;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        height: auto;
+        border-left: none;
+        border-bottom: 2px solid #333;
+      }
+
+      #videoContainer {
+        height: 300px;
+      }
+
+      .nav-buttons button {
+        flex: 1 1 100%;
+      }
     }
   </style>
 </head>
@@ -130,7 +164,9 @@
               allowfullscreen>
       </iframe>
     </div>
-
+    <div id="videoDescription">
+      <strong>وصف الفيديو:</strong> اختر فيديو من القائمة الجانبية لمشاهدته. ستظهر هنا تفاصيل الدرس الذي تقوم بمشاهدته.
+    </div>
     <div class="nav-buttons">
       <button onclick="prevVideo()" id="prevBtn">السابق</button>
       <button onclick="nextVideo()" id="nextBtn">التالي</button>
@@ -141,7 +177,7 @@
     <h3>Week 0</h3>
     
     <ul>
-      <li data-id="w0l1" onclick="loadVideo('https://www.youtube.com/embed/piABmjMawLk', 'w0l1')">
+      <li data-id="w0l1" data-desc="مقدمة عن CS50." onclick="loadVideo('https://www.youtube.com/embed/piABmjMawLk', 'w0l1')">
         الدرس التمهيدي <span class="status"></span>
       </li>
 <!--       <li data-id="w0l2" onclick="loadVideo('', 'w0l2')">
@@ -167,7 +203,7 @@
 
   <script>
     const videos = [
-      { id: 'w0l1', file: 'https://www.youtube.com/embed/piABmjMawLk' },
+      { id: 'w0l1', file: 'https://www.youtube.com/embed/piABmjMawLk',  desc: 'مقدمة عن لغة SQL وأساسياتها.' },
       { id: 'w0l2', file: '' },
       { id: 'w1l1', file: '' },
       { id: 'w1l2', file: '' }
@@ -178,7 +214,10 @@
     function loadVideo(filePath, videoId) {
       const video = document.getElementById("videoPlayer");
       const youtube = document.getElementById("youtubePlayer");
+      const descBox = document.getElementById("videoDescription");
 
+      const videoData = videos.find(v => v.id === videoId);
+      
       if (filePath.includes("youtube.com/embed")) {
         youtube.src = filePath;
         youtube.style.display = "block";
@@ -191,7 +230,9 @@
         youtube.style.display = "none";
         youtube.src = "";
       }
-
+      
+      descBox.innerHTML = `<strong>وصف الفيديو:</strong> ${videoData.desc}`;
+      
       currentIndex = videos.findIndex(v => v.id === videoId);
       localStorage.setItem(videoId, 'watched');
       updateWatchedStatus();
