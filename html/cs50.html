@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>CS50</title>
+  <meta charset="UTF-8" />
+  <title>بالعربي CS50</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       display: flex;
@@ -15,9 +16,9 @@
     }
 
     @keyframes gradientMove {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .sidebar {
@@ -86,6 +87,7 @@
       border: none;
       border-radius: 10px;
     }
+
     #videoDescription {
       background-color: rgba(255, 255, 255, 0.85);
       border-radius: 8px;
@@ -123,6 +125,7 @@
       background-color: #ccc;
       cursor: not-allowed;
     }
+
     /* Responsive */
     @media (max-width: 768px) {
       body {
@@ -146,14 +149,16 @@
     }
   </style>
 </head>
+
 <body>
 
   <div class="content">
-    <h1 class="title">CS50</h1>
+    <h1 class="title">بالعربي CS50</h1>
     <h2>مشاهدة الدرس</h2>
+
     <div id="videoContainer">
       <video id="videoPlayer" controls style="display: none;">
-        <source src="" type="video/mp4">
+        <source src="" type="video/mp4" />
         متصفحك لا يدعم تشغيل الفيديو.
       </video>
 
@@ -164,9 +169,11 @@
               allowfullscreen>
       </iframe>
     </div>
+
     <div id="videoDescription">
       <strong>وصف الفيديو:</strong> اختر فيديو من القائمة الجانبية لمشاهدته. ستظهر هنا تفاصيل الدرس الذي تقوم بمشاهدته.
     </div>
+
     <div class="nav-buttons">
       <button onclick="prevVideo()" id="prevBtn">السابق</button>
       <button onclick="nextVideo()" id="nextBtn">التالي</button>
@@ -175,7 +182,6 @@
 
   <div class="sidebar">
     <h3>Week 0</h3>
-    
     <ul>
       <li data-id="w0l1" data-desc="مقدمة عن CS50." onclick="loadVideo('https://www.youtube.com/embed/piABmjMawLk', 'w0l1')">
         الدرس التمهيدي <span class="status"></span>
@@ -195,22 +201,23 @@
     <h3></h3> 
     <ul>
       
-      <li data-id="w1l2" onclick="loadVideo('', 'w1l2')">
+      <li data-id="w1l1" onclick="loadVideo('', 'w1l1')">
         الدرس الاول <span class="status"></span>
       </li>
       <li data-id="w1l2" onclick="loadVideo('', 'w1l2')">
         الدرس الثاني <span class="status"></span>
       </li>
-    </ul> -->
+    </ul>-->
   </div> 
 
   <script>
-    const videos = [
+      const videos = [
       { id: 'w0l1', file: 'https://www.youtube.com/embed/piABmjMawLk',  desc: 'مقدمة عن CS50.' },
       { id: 'w0l2', file: 'https://www.youtube.com/embed/0HdP7WCzrOE',  desc: 'ما هي علوم الحاسب.' },
       { id: 'w0l3', file: 'https://www.youtube.com/embed/hDRR4gKp8gk',  desc: ' ASCII Code: https://www.ascii-code.com/' },
       { id: 'w0l4', file: 'https://www.youtube.com/embed/ImHYODgOOH8',  desc: 'ما هي الخوارزميات' }
     ];
+
 
     let currentIndex = -1;
 
@@ -220,7 +227,7 @@
       const descBox = document.getElementById("videoDescription");
 
       const videoData = videos.find(v => v.id === videoId);
-      
+
       if (filePath.includes("youtube.com/embed")) {
         youtube.src = filePath;
         youtube.style.display = "block";
@@ -233,9 +240,9 @@
         youtube.style.display = "none";
         youtube.src = "";
       }
-      
+
       descBox.innerHTML = `<strong>وصف الفيديو:</strong> ${videoData.desc}`;
-      
+
       currentIndex = videos.findIndex(v => v.id === videoId);
       localStorage.setItem(videoId, 'watched');
       updateWatchedStatus();
