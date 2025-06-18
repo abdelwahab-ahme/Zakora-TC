@@ -5,93 +5,68 @@
   <link rel="icon" href="../icon/ايقونة.ico" type="image/x-icon">
   <title>امتحان تجريبي</title>
   <style>
-  body {
-    font-family: Arial;
-    background-color: #e0f7fa;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-sizing: border-box;
-  }
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  label {
-    font-weight: bold;
-  }
-  input[type="text"] {
-    width: 90%;
-    max-width: 400px;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    font-size: 16px;
-    border: 1px solid #aaa;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  .question {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 600px;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-  }
-  button {
-    background-color: #0288d1;
-    color: white;
-    padding: 12px 24px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  button:hover {
-    background-color: #0277bd;
-  }
-  #result {
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #006064;
-    text-align: center;
-  }
-  #timer {
-    font-size: 18px;
-    font-weight: bold;
-    color: red;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  .disabled {
-    pointer-events: none;
-    opacity: 0.6;
-  }
-
-  /* Responsive for mobile */
-  @media (max-width: 480px) {
     body {
-      padding: 15px;
+      font-family: Arial;
+      background-color: #e0f7fa;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      font-weight: bold;
     }
     input[type="text"] {
-      font-size: 14px;
-    }
-    button {
-      width: 100%;
-      font-size: 15px;
+      width: 300px;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      border: 1px solid #aaa;
+      border-radius: 5px;
     }
     .question {
-      padding: 15px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 20px;
     }
-  }
-</style>
-
+    button {
+      background-color: #0288d1;
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0277bd;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #006064;
+    }
+    #timer {
+      font-size: 18px;
+      font-weight: bold;
+      color: red;
+      margin-bottom: 20px;
+    }
+    .disabled {
+      pointer-events: none;
+      opacity: 0.6;
+    }
+  </style>
 </head>
 <body>
 
@@ -110,16 +85,16 @@
 
 <script>
 const questions = [
-  { question: "ما عاصمة مصر؟", correct: "القاهرة" },
-  { question: "2 + 2 = ؟", correct: "4" },
-  { question: "ما لون السماء؟", correct: "أزرق" },
-  { question: "عكس كلمة طويل؟", correct: "قصير" },
-  { question: "كم عدد حروف كلمة (مدرسة)؟", correct: "5" },
-  { question: "من مؤسس شركة أبل؟", correct: "ستيف جوبز" },
-  { question: "ما هو العنصر الكيميائي للماء؟", correct: "H2O" },
-  { question: "ما أكبر قارة؟", correct: "آسيا" },
-  { question: "ما جمع كلمة كتاب؟", correct: "كتب" },
-  { question: "كم ثانية في الدقيقة؟", correct: "60" }
+  { question: "قم بتحويل رقم 120 من النظام العشري الي النظام الثنائي؟", correct: "01111000" }
+  ,{ question: " قم بتحويل 01010111 من النظام ثنائي الي النظام العشري؟", correct: "87" },
+   { question: "باي حرف يمثل الرقم 87؟", correct: "W" },
+   { question: "اكتب حرف a بالنظام الثنائي؟", correct: "01100001" },
+   { question: "بما يسمي نظام الالوان الاساسية؟", correct: "RGB" },
+   { question: "هي مجموعة من الخطوات التي تستخدم لحل المشكلة", correct: "الخوارزميات" },
+   { question: "هو مجموعة من الخطوات المرتبة؟", correct: "pseudocode" },
+   { question: "هي مجموعة من الاوامر؟", correct: "functions" },
+   { question: " حلقات التكرار تسمي؟", correct: "loops" },
+   { question: "جملة شرطية تسمي؟", correct: "if" }
 ];
 
 const quizDiv = document.getElementById("quiz");
