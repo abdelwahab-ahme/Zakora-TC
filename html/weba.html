@@ -18,16 +18,35 @@
 
 
 
-
-<header class="navbar">
-        <h2><a href="#" class="logo"><img src="../img/Zakora-tc (1).png" width="50"> zakora-tc</a></h2>
-         <button class="hamburger" onclick="toggleMenu()">☰</button>
+  <header class="navbar">
+        <h2><a href="#" class="logo"><img src="../img/Zakora-tc (1).png" width="50"> Zakora-tc</a></h2>
+        <button class="hamburger" onclick="toggleMenu()">☰</button>
         <ul class="nav-links" id="navLinks">
-            <li><a href="../index.html" class="active">Home</a></li>
-            <li><a href="#container">Product</a></li>
-            <li><a href="">Shop</a></li>
+            <li><a href="#" class="active">Home</a></li>
+            <li>
+              <div class="dropdown">
+                <button class="dropbtn">
+                  <span class="arrow">▼</span> Tracks
+                </button>
+                <div class="dropdown-content">
+                  <a href="./cs50.html">دورة CS50</a>
+                  <a href="./web13.html">دورة SQL</a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="dropdown">
+                <button class="dropbtn">
+                  <span class="arrow">▼</span> problem solving
+                </button>
+                <div class="dropdown-content">
+                  <a href="">SQL</a>
+                </div>
+              </div>
+            </li>
+            <li><a href="./من نحن.html">Shop</a></li>
             <li><a href="#info">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            
         </ul>
         <div class="search-box">
             <input type="text" placeholder="ابحث هنا...">
