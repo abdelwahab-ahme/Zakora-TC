@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="../img/Zakora-tc (1).png" type="image/x-icon">
+  <title>يرجى الانتظار</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(45deg, #ff007f, #ff7f00, #007fff, #00ff7f);
+      background-size: 400% 400%;
+      animation: gradientBG 12s ease infinite;
+      font-family: 'Cairo', sans-serif;
+    }
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+    .container {
+      text-align: center;
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+    }
+
+    .loader {
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid #00bcd4;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    h2 {
+      color: #00796b;
+    }
+    .back-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #00acc1;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  z-index: 9999;
+}
+
+.back-button:hover {
+  background-color: #00838f;
+  transform: translateY(-2px);
+}
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="loader"></div>
+  <h2>يرجى الانتظار<br>جاري تجهيزالوظائف المتاحة لك...</h2>
+</div>
+
+
+<a href="../index.html" class="back-button" title="العودة إلى الصفحة الرئيسية">
+  <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20" fill="#ffffff">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M19 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H19v-2z"/>
+  </svg>
+  <span>العودة الي الصفحة الرئيسية</span>
+</a>
+
+
+</body>
+</html>
