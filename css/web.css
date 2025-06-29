@@ -471,6 +471,16 @@ header ul li a:hover, .active {
         height: 35px;
     }
 }
+/* زر الهمبرغر مخفي في الكمبيوتر */
+.hamburger {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+}
+
+/* عند تصغير الشاشة – موبايل */
 @media (max-width: 768px) {
   .hamburger {
     display: block;
@@ -485,10 +495,10 @@ header ul li a:hover, .active {
     right: 20px;
     padding: 10px;
     border-radius: 8px;
-    z-index: 1000;
   }
 
   .nav-links.show {
     display: flex;
   }
 }
+
