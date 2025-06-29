@@ -77,7 +77,15 @@ header ul li a:hover, .active {
     color: #200016;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-   .dropdown {
+
+
+
+
+
+
+
+
+        .dropdown {
       position: relative;
     }
 
