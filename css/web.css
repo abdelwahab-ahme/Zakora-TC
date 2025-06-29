@@ -471,3 +471,24 @@ header ul li a:hover, .active {
         height: 35px;
     }
 }
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #444;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    z-index: 1000;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+}
