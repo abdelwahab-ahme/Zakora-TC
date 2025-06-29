@@ -471,6 +471,28 @@ header ul li a:hover, .active {
         height: 35px;
     }
 }
+/* تنسيق أساسي */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+  color: white;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+}
+
+
 /* زر الهمبرغر مخفي في الكمبيوتر */
 .hamburger {
   display: none;
