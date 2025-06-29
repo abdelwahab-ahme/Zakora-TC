@@ -506,6 +506,7 @@ header ul li a:hover, .active {
 @media (max-width: 768px) {
   .hamburger {
     display: block;
+    z-index: 101; /* تجعل الزر فوق القائمة */
   }
 
   .nav-links {
@@ -514,9 +515,11 @@ header ul li a:hover, .active {
     background-color: #444;
     position: absolute;
     top: 60px;
-    right: 20px;
+    right: 10px; /* بدلًا من 20 لتجنب التزاحم */
     padding: 10px;
     border-radius: 8px;
+    width: 200px; /* تمنعها من ملء الشاشة */
+    z-index: 100; /* خلف زر الهمبرغر */
   }
 
   .nav-links.show {
