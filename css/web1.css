@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
-    background: linear-gradient(45deg, #ff007f, #ff7f00, #007fff, #00ff7f);
+   background: linear-gradient(  #0270b9f6);
     background-size: 400% 400%;
     animation: gradientMove 10s ease infinite;
     font-family: 'Arial', sans-serif;
@@ -30,7 +30,7 @@ a {
 
 /* شريط التنقل العلوي */
 header {
-    background: linear-gradient(45deg, #ff007f, #ff7f00, #007fff, #00ff7f);
+    background: linear-gradient(45deg, #0270b9f6);
     background-size: 400% 400%;
     animation: gradientMove 10s ease infinite;
     position: fixed;
@@ -85,7 +85,7 @@ header ul li a:hover, .active {
 
 
 
- .dropdown {
+        .dropdown {
       position: relative;
     }
 
@@ -198,6 +198,7 @@ header ul li a:hover, .active {
 }
 
 /* باقي المحتوى */
+
 .container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -239,6 +240,9 @@ header ul li a:hover, .active {
 }
 
 /* الكرت مع الخلفية */
+#d01 { background-image: url(../img/انجليزي.png);} 
+#d02 { background-image: url(../img/الماني.png);} 
+#d03 { background-image: url(../img/اسباني.png);} 
 #d1 { background-image: url(../img/اساسيات\ الحاسوب.jpg);}
 #d2 { background-image: url(../img/النظم\ العددية.jfif);}
 #d3 { background-image: url(../img/اساسيات\ البرمجة.jpg);}
@@ -253,6 +257,7 @@ header ul li a:hover, .active {
 #d12 { background-image: url(../img/جافا\ سكربت.jfif);}
 #d13 { background-image: url(../img/سكول.jfif);} 
 #d14 { background-image: url(../img/CS50.jpeg);} 
+
 
 /* النص الشفاف اللي يظهر عند الوقوف */
  .overlay-text {
@@ -287,7 +292,7 @@ header ul li a:hover, .active {
     text-align: right;
     direction: rtl;
     padding: 20px;
-    background-color: #161515;
+    background-color: #002152;
     color:#fff; 
 }
 
@@ -299,6 +304,7 @@ header ul li a:hover, .active {
 
 #about-us {
     order: 1;
+     text-align: center;
 }
 
 #contact {
@@ -308,14 +314,14 @@ header ul li a:hover, .active {
 
 #info {
     order: 3;
-    text-align: left;
+    text-align: center;
     direction: ltr;
 }
 
 .footer-bottom {
     text-align: center;
     padding: 10px;
-    background-color: #161515;
+    background-color: #002152;
     font-size: 14px;
     color:#fff; 
 }
@@ -483,5 +489,25 @@ header ul li a:hover, .active {
 .div-box {
     position: relative;
     overflow: hidden;
+}
+
+
+
+
+.section-divider {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, #007bff, #00c3ff);
+  margin: 60px auto 20px;
+  width: 80%;
+  border-radius: 5px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 26px;
+  color: #ffffff;
+  margin-bottom: 30px;
+  
 }
 
