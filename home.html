@@ -36,8 +36,19 @@
                 </div>
               </div>
             </li>
-            <li><a href="./html/من نحن.html">Shop</a></li>
-            <li><a href="#info">About</a></li>
+            <li><a href="./html/من نحن.html">About</a></li>
+            
+            <div class="dropdown" id="toolbar">
+              <button class="dropbtn">
+                <span class="arrow">▼</span> مرحباً، <span id="username-display"></span>
+              </button>
+              <div class="dropdown-content">
+              
+                <button onclick="window.location.href='html/grade.html'">الدرجات</button>
+                <button id="logout">تسجيل الخروج</button>
+              
+            </div>
+            </div>
             
         </ul>
         <div class="search-box">
@@ -220,9 +231,16 @@
 
 
     <script>
-  function toggleMenu() {
-    document.getElementById("navLinks").classList.toggle("show");
-  }
+   const username = localStorage.getItem("username");
+    if (!username) {
+      window.location.href = "login.html";
+    }
+    document.getElementById("username-display").textContent = username;
+
+    document.getElementById("logout").addEventListener("click", function () {
+      localStorage.removeItem("username");
+      window.location.href = "login.html";
+    });
 </script>
 
 
