@@ -447,3 +447,21 @@ header ul li a:hover, .active {
         transform: translateY(0);
       }
     }
+
+    #toolbar {
+       
+        color: #fff;
+        
+      }
+      #toolbar span {
+        font-weight: bold;
+        color: #0f0;
+      }
+      #toolbar button {
+        float: right;
+        cursor: pointer;
+      }
+      .score {
+        margin-top: 20px;
+        font-size: 20px;
+      }
