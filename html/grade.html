@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>درجاتي</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; }
+    .toolbar {
+      background: #333; color: #fff; padding: 10px; text-align: left;
+    }
+    .toolbar span { font-weight: bold; color: #0f0; }
+    .toolbar button {
+      float: right; background: red; color: #fff; border: none;
+      padding: 5px 10px; cursor: pointer; border-radius: 5px;
+    }
+    h1 { text-align: center; margin: 20px 0; }
+    .table-box {
+      max-width: 700px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    table { 
+      width: 100%; 
+      border-collapse: collapse; 
+      text-align: center; 
+    }
+    th, td { 
+      border: 1px solid #333; 
+      padding: 12px; 
+      font-size: 16px; 
+    }
+    th { background: #333; color: #fff; }
+    tr:nth-child(even) { background: #f9f9f9; }
+    .back-btn {
+      margin-top: 20px;
+      display: block;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .back-btn:hover { background: #0056b3; }
+  </style>
+</head>
+<body>
+  <!-- شريط الأدوات -->
+  <div class="toolbar">
+    مرحباً، <span id="username-display"></span>
+    <button id="logout">تسجيل الخروج</button>
+  </div>
+
+  <h1>📚 درجات المواد</h1>
+  
+  <div class="table-box">
+    <table>
+      <thead>
+        <tr>
+          <th>المادة</th>
+          <th>الدرجة</th>
+        </tr>
+      </thead>
+      <tbody id="gradesTable"></tbody>
+    </table>
+    <button class="back-btn" onclick="window.location.href='home.html'">⬅ الرجوع للصفحة الرئيسية</button>
+  </div>
+
+  <script>
+    // التحقق من تسجيل الدخول
+    let currentUser = localStorage.getItem("currentUser");
+    if (!currentUser) {
+      window.location.href = "login.html";
+    }
+
+    // جلب بيانات المستخدمين
+    let users = JSON.parse(localStorage.getItem("users")) || {};
+    let grades = users[currentUser] || {};
+
+    // عرض الاسم في شريط الأدوات
+    document.getElementById("username-display").textContent = currentUser;
+
+    // تعبئة الجدول بالدرجات
+    let tbody = document.getElementById("gradesTable");
+    for (let subject in grades) {
+      let tr = document.createElement("tr");
+      tr.innerHTML = `<td>${subject}</td><td>${grades[subject]}%</td>`;
+      tbody.appendChild(tr);
+    }
+
+    // زر تسجيل الخروج
+    document.getElementById("logout").addEventListener("click", function () {
+      localStorage.removeItem("currentUser");
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>
