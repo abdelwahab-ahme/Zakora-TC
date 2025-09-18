@@ -7,12 +7,73 @@
     <title>Zakora-TC</title>
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/web.css">
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+  
+      header.navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        color: #fff;
+        padding: 10px 20px;
+      }
+  
+     
+  
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+      }
+  
+      .nav-links li a {
+        color: #fff;
+        text-decoration: none;
+      }
+  
+      /* زر الهامبورجر */
+      .hamburger {
+        display: none;
+        font-size: 28px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #fff;
+      }
+  
+      /* للموبايل */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          background: #444;
+          position: absolute;
+          top: 60px;
+          right: 0;
+          width: 200px;
+          padding: 15px;
+        }
+  
+        .nav-links.active {
+          display: flex;
+        }
+  
+        .hamburger {
+          display: block;
+        }
+      }
+    </style>
 </head>
 <body>
+
   
     <header class="navbar">
         <h2><a href="#" class="logo"><img src="./img/Zakora-tc (1).png" width="50"> Zakora-tc</a></h2>
-        <button class="hamburger" onclick="toggleMenu()">☰</button>
+        <button class="hamburger" id="hamburger" onclick="toggleMenu()">☰</button>
         <ul class="nav-links" id="navLinks">
             <li><a href="#" class="active">Home</a></li>
             <li>
@@ -231,6 +292,14 @@
 
 
     <script>
+         const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("navLinks");
+
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+
    const username = localStorage.getItem("username");
     if (!username) {
       window.location.href = "login.html";
